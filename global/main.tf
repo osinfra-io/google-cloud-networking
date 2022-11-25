@@ -1,16 +1,24 @@
 terraform {
+
+  # Requiring Providers
+  # https://www.terraform.io/language/providers/requirements#requiring-providers
+
   required_providers {
+
+    # Google Cloud Platform Provider
+    # https://registry.terraform.io/providers/hashicorp/google/latest/docs
+
     google = {
       source = "hashicorp/google"
     }
   }
 }
 
-provider "google" {
-}
+# Google Project Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-project
 
 module "project" {
-  source = "git@github.com:osinfra-io/terraform-google-project"
+  source = "github.com/osinfra-io/terraform-google-project"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
