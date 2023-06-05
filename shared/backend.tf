@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    prefix = "google-cloud-logging"
+    prefix = "google-cloud-services"
   }
 }
