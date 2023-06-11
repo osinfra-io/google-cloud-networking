@@ -42,6 +42,6 @@ module "project" {
 module "vpc" {
   source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.0"
 
-  name    = "services-vpc"
+  name    = "services"
   project = module.project.project_id
 }
