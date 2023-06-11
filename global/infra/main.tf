@@ -33,7 +33,7 @@ module "project" {
     "platform"    = "google-cloud-services",
   }
 
-  prefix = "testing"
+  prefix = "plt-lz"
 }
 
 # Google VPC Module (osinfra.io)
