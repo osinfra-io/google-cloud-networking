@@ -1,4 +1,4 @@
-# <img align="left" width="45" height="45" src="https://user-images.githubusercontent.com/1610100/202321831-9cf218f9-660d-481f-8578-c2ba19fcc93a.png"> Google Cloud Platform - Services
+# <img align="left" width="45" height="45" src="https://github.com/osinfra-io/google-cloud-services/assets/1610100/59b781d4-46a3-4c57-b5ac-200de6bf8e76"> Google Cloud Platform - Services
 
 **[GitHub Actions](https://github.com/osinfra-io/google-cloud-services/actions):**
 
