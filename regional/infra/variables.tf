@@ -4,11 +4,6 @@ variable "environment" {
   default     = "sb"
 }
 
-variable "ip_cidr_range" {
-  description = "The range of internal addresses that are owned by this subnetwork"
-  type        = string
-}
-
 variable "region" {
   description = "The region for this subnetwork"
   type        = string
