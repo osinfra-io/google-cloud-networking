@@ -30,9 +30,11 @@ data "terraform_remote_state" "global" {
 module "subnet" {
   source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.0"
 
-  ip_cidr_range = "10.60.0.0/20"
-  name          = "services-${var.region}"
-  network       = "services"
+  for_each = var.subnets
+
+  ip_cidr_range = each.value.ip_cidr_range
+  name          = "${each.key}-${var.region}"
+  network       = local.global.vpc_name
 
   # When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and
   # services by using Private Google Access. This is required for private Kubernetes clusters.
@@ -49,11 +51,11 @@ module "subnet" {
   secondary_ip_ranges = [
     {
       range_name    = "services-k8s-services-${var.region}"
-      ip_cidr_range = "10.60.240.0/20"
+      ip_cidr_range = each.value.services_ip_cidr_range
     },
     {
       range_name    = "service-k8s-pods-${var.region}"
-      ip_cidr_range = "10.0.0.0/14"
+      ip_cidr_range = each.value.pod_ip_cidr_range
     }
   ]
 }

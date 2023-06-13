@@ -34,4 +34,5 @@ No resources.
 | Name | Description |
 |------|-------------|
 | <a name="output_project_id"></a> [project\_id](#output\_project\_id) | The project ID |
+| <a name="output_vpc_name"></a> [vpc\_name](#output\_vpc\_name) | The VPC name |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
