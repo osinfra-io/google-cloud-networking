@@ -1,3 +1,4 @@
+environment   = "production"
 region        = "us-east1"
 remote_bucket = "plt-lz-services-e194-prod"
 
@@ -9,5 +10,3 @@ subnets = {
     services_ip_cidr_range = "10.60.240.0/20"
   }
 }
-
-workspace_environment = "production"
