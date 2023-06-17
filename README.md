@@ -14,24 +14,24 @@ This repository creates a common services layer that aligns with our [Google Clo
 
 ## <img align="left" width="35" height="35" src="https://user-images.githubusercontent.com/1610100/209340481-2a74c148-f10d-4192-8eae-c88645663824.png"> Team Topologies
 
->Simple but comprehensive information for the platform provides a single point of entry for anyone wanting to know more about the services, report an issue or find out the current status, roadmap, and so on. - [Team Topologies: Thin Platform Template](https://github.com/TeamTopologies/Thin-Platform-template)
+>Simple but comprehensive information for the platform provides a single entry point for anyone wanting to know more about the services, report an issue, or find out the current status, roadmap, etc. - [Team Topologies: Thin Platform Template](https://github.com/TeamTopologies/Thin-Platform-template)
 
-### Platform Information
+### 🏭 Platform Information
 
 - Documentation: [docs.osinfra.io](https://docs.osinfra.io/google-cloud-platform/landing-zone/google-cloud-services)
 - Live status page:
 
-### Platform Dependencies
+### 🏗️ Platform Dependencies
 
 - [google-cloud-hierarchy](https://github.com/osinfra-io/google-cloud-hierarchy): Metaphorically speaking, the [Google Cloud resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy) resembles the file system found in traditional operating systems as a way of organizing and managing entities hierarchically.
 - [google-cloud-terraform-backend](https://github.com/osinfra-io/google-cloud-terraform-backend): Terraform uses persisted state data to keep track of the resources it manages. Most non-trivial Terraform configurations use a backend to store state remotely. This lets multiple people access the state data and work together on that collection of infrastructure resources.
-- [google-cloud-workload-identity](https://github.com/osinfra-io/google-cloud-workload-identity): With [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation), you can use Identity and Access Management (IAM) to grant external identities IAM roles, including the ability to impersonate service accounts. This lets you access resources directly, using a [short-lived access token](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct), and eliminates the maintenance and security burden associated with service account keys.
+- [google-cloud-workload-identity](https://github.com/osinfra-io/google-cloud-workload-identity): With [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation), you can use Identity and Access Management (IAM) to grant external identities IAM roles, including the ability to impersonate service accounts. This lets you access resources directly using a [short-lived access token](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct) and eliminates the maintenance and security burden associated with service account keys.
 
-### Service Interfaces
+### 🔩 Service Interfaces
 
-- [⚙️ Add or update Kubernetes networking resources](https://github.com/osinfra-io/google-cloud-services/issues/new?assignees=&labels=enhancement%2Cgood+first+issue&projects=&template=add-update-k8s-networking-resources.yml&title=Add+or+update+Kubernetes+networking+resources)
+- [Add or update Kubernetes networking resources](https://github.com/osinfra-io/google-cloud-services/issues/new?assignees=&labels=enhancement%2Cgood+first+issue&projects=&template=add-update-k8s-networking-resources.yml&title=Add+or+update+Kubernetes+networking+resources)
 
-### Response Times
+### 🕙 Response Times
 
 - Responsible team: [Platform - Google Cloud Landing Zone](https://github.com/orgs/osinfra-io/teams/platform-google-cloud-landing-zone)
 - Response time for incidents: `60 minutes`
@@ -39,11 +39,11 @@ This repository creates a common services layer that aligns with our [Google Clo
 - Response time for support:  `60 minutes`
 - Response time for feedback: `30 minutes`
 
-### Roadmap
+### 🗺️ Roadmap
 
-- Link to roadmap: [GitHub Project](https://github.com/orgs/osinfra-io/projects/1/views/7)
+- Link to the roadmap: [GitHub Project](https://github.com/orgs/osinfra-io/projects/1/views/7)
 
-### Communication Channels
+### 🗨️ Communication Channels
 
 #### To report a possible incident
 
@@ -69,13 +69,13 @@ To avoid slowing down [stream-aligned](https://teamtopologies.com/key-concepts) 
 
 See the documentation for setting up a local development environment [here](https://docs.osinfra.io/development-setup).
 
-### Tools
+### ⚒️ Tools
 
 - [pre-commit](https://github.com/pre-commit/pre-commit)
 - [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
 
-### Terraform Documentation
+### 📓 Terraform Documentation
 
 - [global](global/infra/README.md)
 - [regional](regional/infra/README.md)
