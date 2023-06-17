@@ -1,0 +1,104 @@
+name: ⚙️ Add or update Kubernetes networking resources
+description: Service interface for adding or updating Kubernetes networking resources.
+title: Add or update Kubernetes networking resources
+labels:
+  - enhancement
+  - good first issue
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you submit this issue your Kubernetes projects need to be created and the
+        Kubernetes Engine API, `container.googleapis.com` enabled. Then fill out the
+        following details to add or update Kubernetes networking resources.
+
+  - type: input
+    id: email-address
+    attributes:
+      label: "Email address:"
+      description: How can we get in touch with you if we need more info?
+      placeholder: user-name@osinfra.io
+    validations:
+      required: true
+
+  - type: dropdown
+    id: vpc-network
+    attributes:
+      label: "Select the VPC network:"
+      options:
+        - "standard-shared"
+      multiple: true
+    validations:
+      required: true
+
+  - type: dropdown
+    id: subnet-region
+    attributes:
+      label: "Select the subnet region:"
+      options:
+        - "asia-east1"
+        - "asia-east2"
+        - "asia-northeast1"
+        - "asia-northeast2"
+        - "asia-northeast3"
+        - "asia-south1"
+        - "asia-south2"
+        - "asia-southeast1"
+        - "asia-southeast2"
+        - "australia-southeast1"
+        - "australia-southeast2"
+        - "europe-central2"
+        - "europe-north1"
+        - "europe-southwest1"
+        - "europe-west1"
+        - "europe-west12"
+        - "europe-west2"
+        - "europe-west3"
+        - "europe-west4"
+        - "europe-west6"
+        - "europe-west8"
+        - "europe-west9"
+        - "me-central1"
+        - "me-west1"
+        - "northamerica-northeast1"
+        - "northamerica-northeast2"
+        - "southamerica-east1"
+        - "southamerica-west1"
+        - "us-central1"
+        - "us-east1"
+        - "us-east4"
+        - "us-east5"
+        - "us-south1"
+        - "us-west1"
+        - "us-west2"
+        - "us-west3"
+        - "us-west4"
+      multiple: true
+    validations:
+      required: true
+
+  - type: textarea
+    id: project-id
+    attributes:
+      label: "Kubernetes cluster project ID(s):"
+      description: The Kubernetes cluster service project ID(s). When you use Shared VPC, you designate a project as a host project and attach one or more other service projects to it.
+      placeholder: "Example: stream-team-k8s-tf79a2-sb, stream-team-k8s-tf87df-pre-prod, stream-team-k8s-tf27rd-prod"
+    validations:
+      required: false
+
+  - type: textarea
+    id: private-cluster
+    attributes:
+      label: "Private cluster Continuous Delivery service account:"
+      description: Private clusters require that you grant compute.networks.get and compute.networks.updatePeering permissions on the host project for the service account, used to create the cluster.
+    validations:
+      required: false
+
+  - type: textarea
+    id: comments
+    attributes:
+      label: "Additional comments:"
+      description: Anything else you'd like to add that would help us understand your request better?
+    validations:
+      required: false
