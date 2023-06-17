@@ -49,7 +49,7 @@ jobs:
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east1-non-production
       working_directory: regional/infra
-      workload_identity_provider: projects/134040294660/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
+      workload_identity_provider: projects/992372365053/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       infracost_api_key: ${{ secrets.INFRACOST_API_KEY }}
@@ -69,7 +69,7 @@ jobs:
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east1-non-production
       working_directory: regional/infra
-      workload_identity_provider: projects/134040294660/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
+      workload_identity_provider: projects/992372365053/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       infracost_api_key: ${{ secrets.INFRACOST_API_KEY }}
