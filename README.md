@@ -29,7 +29,7 @@ This repository creates a common services layer that aligns with our [Google Clo
 
 ### Service Interfaces
 
-None
+- [⚙️ Add or update Kubernetes networking resources](https://github.com/osinfra-io/google-cloud-services/issues/new?assignees=&labels=enhancement%2Cgood+first+issue&projects=&template=add-update-k8s-networking-resources.yml&title=Add+or+update+Kubernetes+networking+resources)
 
 ### Response Times
 
