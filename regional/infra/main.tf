@@ -24,7 +24,7 @@ data "terraform_remote_state" "global" {
     prefix = "google-cloud-services"
   }
 
-  workspace = "global-${var.environment}"
+  workspace = "global-${var.workspace_environment}"
 }
 
 module "subnet" {

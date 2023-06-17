@@ -1,9 +1,3 @@
-variable "environment" {
-  description = "The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production)"
-  type        = string
-  default     = "sb"
-}
-
 variable "region" {
   description = "The region for this subnetwork"
   type        = string
@@ -22,4 +16,10 @@ variable "subnets" {
     pod_ip_cidr_range      = string
     services_ip_cidr_range = string
   }))
+}
+
+variable "workspace_environment" {
+  description = "The workspace environment suffix for example: `sandbox`, `non-production`, `production`"
+  type        = string
+  default     = "sandbox"
 }
