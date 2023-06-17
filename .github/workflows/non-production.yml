@@ -67,7 +67,7 @@ jobs:
       terraform_plan_args: -var-file=tfvars/us-east4-non-production.tfvars
       terraform_state_bucket: plt-lz-services-3bfe-nonprod
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
-      terraform_workspace: us-east1-non-production
+      terraform_workspace: us-east4-non-production
       working_directory: regional/infra
       workload_identity_provider: projects/992372365053/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
