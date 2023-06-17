@@ -18,7 +18,7 @@ This repository creates a common services layer that aligns with our [Google Clo
 
 ### Platform Information
 
-- Documentation: [docs.osinfra.io](https://docs.osinfra.io/google-cloud-platform/landing-zone)
+- Documentation: [docs.osinfra.io](https://docs.osinfra.io/google-cloud-platform/landing-zone/google-cloud-services)
 - Live status page:
 
 ### Platform Dependencies
@@ -74,88 +74,6 @@ See the documentation for setting up a local development environment [here](http
 - [pre-commit](https://github.com/pre-commit/pre-commit)
 - [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
-
-## CIDR Blocks
-
-The following CIDR blocks are available:
-
-| Subnet address | VPC |
-|:--------------:|:---:|
-|10.0.0.0/10       | standard-shared |
-|10.64.0.0/10      | free |
-|10.128.0.0/10     | free |
-|10.192.0.0/10     | free |
-
-## VPC Name: `standard-shared`
-
-> NOTE: This VPC uses the same ranges for sandbox, pre-production and production. It uses the default size for the subnet's primary IP range,
-> the subnet's secondary IP range for Pods and the subnet's secondary IP range for Services.
-
-[GKE IPAM calculator](https://googlecloudplatform.github.io/gke-ip-address-management)
-
-We are breaking up the `10.0.0.0/10` CIDR block with the above calculator using the following inputs:
-
-```json
-{
- "network": "10.0.0.0",
- "netmask": 10,
- "nodeNetmask": 20,
- "clusterNetmask": 14,
- "serviceNetmask": 20,
- "nodePodNetmask": 24,
- "masterNetwork": "UNIQUE",
- "locationType": "REGIONAL",
- "extraZones": 1
-}
-```
-
-### Kubernetes Info
-
-*NOTES: A Kubernetes [VPC-native cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips) uses [secondary ranges](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing_secondary_range_pods) for Pods & Services.*
-
-**The maximum number of Pods and Services for a given GKE cluster is determined by the size of the cluster's secondary ranges. The maximum number of nodes in the cluster is limited by the size of the cluster's subnet's primary IP address range and the cluster's Pod address range.**
-
-This will give us 15 clusters and each cluster will support:
-
-- Up to 1023 node(s) per cluster.
-- Up to 4096 service(s) per cluster.
-- Up to 110 pods per node.
-
-**Master CIDR Block:**
-
-| Subnet Address | Cluster |
-|:--------------:|:-------:|
-| 10.61.224.0/28 | services-us-east1 |
-| 10.61.224.16/28 | services-us-east4 |
-| 10.61.224.32/28 | |
-| 10.61.224.48/28 | |
-
-**Primary Ranges:**
-
-| Subnet Address | Nodes | Name |
-|:--------------:|:-----:|:----:|
-| 10.60.0.0/20   | 4092  | services-k8s-us-east1 |
-| 10.60.16.0/20  | 4092  | services-k8s-us-east4 |
-| 10.60.32.0/20  | 4092  | |
-| 10.60.48.0/20  | 4092  | |
-
-**Secondary Pod Ranges:**
-
-| Subnet Address | Pods | Name | Cluster |
-|:--------------:|:----:|:----:|:-------:|
-| 10.0.0.0/14 | 112640 | services-k8s-pods-us-east1 | services-us-east1 |
-| 10.4.0.0/14 | 112640 | services-k8s-pods-us-east4 | services-us-east4 |
-| 10.8.0.0/14 | 112640 | | |
-| 10.12.0.0/14 | 112640 | | |
-
-**Secondary Service Ranges:**
-
-| Subnet Address | Services | Name | Cluster |
-|:--------------:|:--------:|:----:|:-------:|
-| 10.60.240.0/20 | 4096 | services-k8s-services-us-east1 | services-us-east1 |
-| 10.61.0.0/20 | 4096 | services-k8s-services-us-east4 | services-us-east4 |
-| 10.61.16.0/20 | 4096 | | |
-| 10.61.32.0/20 | 4096 | | |
 
 ### Terraform Documentation
 
