@@ -1,6 +1,6 @@
-name: ⚙️ Add or update Kubernetes networking resources
+name: 🔩 Add or update Kubernetes networking resources
 description: Service interface for adding or updating Kubernetes networking resources.
-title: Add or update Kubernetes networking resources
+title: 🔩 Add or update Kubernetes networking resources
 labels:
   - enhancement
   - good first issue
@@ -9,7 +9,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before you submit this issue your Kubernetes projects need to be created and the
+        Before you submit this issue, your Kubernetes projects need to be created and the
         Kubernetes Engine API, `container.googleapis.com` enabled. Then fill out the
         following details to add or update Kubernetes networking resources.
 
