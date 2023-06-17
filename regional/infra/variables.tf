@@ -1,7 +1,7 @@
 variable "environment" {
-  description = "The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production)"
+  description = "The environment for example: `sandbox`, `non-production`, `production`"
   type        = string
-  default     = "sb"
+  default     = "sandbox"
 }
 
 variable "region" {

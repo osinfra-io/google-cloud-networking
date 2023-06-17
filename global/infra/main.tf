@@ -24,7 +24,7 @@ module "project" {
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
   cost_center                     = "x001"
   description                     = "services"
-  environment                     = var.environment
+  environment                     = local.environment_short
   folder_id                       = var.folder_id
 
   labels = {
