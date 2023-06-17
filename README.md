@@ -6,7 +6,7 @@
 
 **[Infracost](https://www.infracost.io):**
 
-[![infracost](https://img.shields.io/endpoint?label=Sandbox%20Infrastructure%20Global&url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7/branch/1ee44b4d-8e3f-4fc9-8c39-2a7c767cf0c8/google-cloud-audit-logging%2520-%2520Sandbox%2520Infrastructure%253A%2520Global)](https://dashboard.infracost.io/org/osinfra-io/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7) [![infracost](https://img.shields.io/endpoint?label=Non-Production%20Infrastructure%20Global&url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7/branch/1ee44b4d-8e3f-4fc9-8c39-2a7c767cf0c8/google-cloud-audit-logging%2520-%2520Non-Production%2520Infrastructure%253A%2520Global)](https://dashboard.infracost.io/org/osinfra-io/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7) [![infracost](https://img.shields.io/endpoint?label=Production%20Infrastructure%20Global&url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7/branch/1ee44b4d-8e3f-4fc9-8c39-2a7c767cf0c8/google-cloud-audit-logging%2520-%2520Production%2520Infrastructure%253A%2520Global)](https://dashboard.infracost.io/org/osinfra-io/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7)
+[![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/4d30a203-d962-4493-b0b0-f7c0a0e4e3ad/branch/6562dbbd-1739-443e-be35-baba352f28f4)](https://dashboard.infracost.io/org/osinfra-io/repos/4d30a203-d962-4493-b0b0-f7c0a0e4e3ad?tab=settings)
 
 ## Repository Description
 
