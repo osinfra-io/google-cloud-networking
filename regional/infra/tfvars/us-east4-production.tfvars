@@ -1,6 +1,6 @@
-environment   = "sandbox"
+environment   = "prod"
 region        = "us-east4"
-remote_bucket = "plt-lz-services-2c8b-sb"
+remote_bucket = "plt-lz-services-e194-prod"
 
 subnets = {
   "services" = {
