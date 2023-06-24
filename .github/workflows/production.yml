@@ -42,7 +42,7 @@ jobs:
     needs: global_infra
     with:
       checkout_ref: ${{ github.ref }}
-      environment: production
+      environment: us-east1-production
       github_environment: "Production Infrastructure: Regional - us-east1"
       service_account: plt-lz-services-github@ptl-lz-terraform-tf62-prod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east1-production.tfvars
@@ -62,7 +62,7 @@ jobs:
     needs: global_infra
     with:
       checkout_ref: ${{ github.ref }}
-      environment: production
+      environment: us-east4-production
       github_environment: "Production Infrastructure: Regional - us-east4"
       service_account: plt-lz-services-github@ptl-lz-terraform-tf62-prod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east4-production.tfvars

@@ -43,7 +43,7 @@ jobs:
     needs: global_infra
     with:
       checkout_ref: ${{ github.ref }}
-      environment: sandbox
+      environment: us-east1-sandbox
       github_environment: "Sandbox Infrastructure: Regional - us-east1"
       service_account: plt-lz-services-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east1-sandbox.tfvars
@@ -63,7 +63,7 @@ jobs:
     needs: global_infra
     with:
       checkout_ref: ${{ github.ref }}
-      environment: sandbox
+      environment: us-east4-sandbox
       github_environment: "Sandbox Infrastructure: Regional - us-east4"
       service_account: plt-lz-services-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east4-sandbox.tfvars
