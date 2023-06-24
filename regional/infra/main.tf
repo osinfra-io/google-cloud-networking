@@ -28,7 +28,7 @@ data "terraform_remote_state" "global" {
 }
 
 module "cloud_nat" {
-  source = "github.com/osinfra-io/terraform-google-cloud-nat//regional?ref=cleanup"
+  source = "github.com/osinfra-io/terraform-google-cloud-nat//regional?ref=v0.1.0"
 
   network = local.global.vpc_name
   project = local.global.project_id
