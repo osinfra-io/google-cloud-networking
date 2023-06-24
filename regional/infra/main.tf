@@ -27,6 +27,18 @@ data "terraform_remote_state" "global" {
   workspace = "global-${var.environment}"
 }
 
+module "cloud_nat" {
+  source = "github.com/osinfra-io/terraform-google-cloud-nat//regional?ref=cleanup"
+
+  network = local.global.vpc_name
+  project = local.global.project_id
+  region  = var.region
+
+  depends_on = [
+    module.subnet
+  ]
+}
+
 module "subnet" {
   source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.0"
 
