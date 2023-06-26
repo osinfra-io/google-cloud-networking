@@ -28,9 +28,9 @@ module "project" {
   folder_id                       = var.folder_id
 
   labels = {
-    environment = var.environment
-    platform    = "google-cloud-services"
-    team        = "platform-google-cloud-landing-zone"
+    env      = var.environment
+    platform = "google-cloud-services"
+    team     = "platform-google-cloud-landing-zone"
   }
 
   prefix = "plt-lz"
@@ -39,15 +39,36 @@ module "project" {
 # Google Cloud DNS Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-cloud-dns
 
+module "private_dns" {
+  source = "github.com/osinfra-io/terraform-google-cloud-dns//global"
+
+  dns_name = "${local.domain_environment}.gcp-priv.osinfra.io."
+
+  labels = {
+    env      = var.environment
+    platform = "google-cloud-services"
+    team     = "platform-google-cloud-landing-zone"
+  }
+
+  name = "${local.domain_environment}-gcp-priv-osinfra-io"
+
+  private_visibility_config_networks = [
+    module.vpc.self_link
+  ]
+
+  project    = module.project.project_id
+  visibility = "private"
+}
+
 module "public_dns" {
   source = "github.com/osinfra-io/terraform-google-cloud-dns//global"
 
   dns_name = "${local.domain_environment}.gcp.osinfra.io."
 
   labels = {
-    environment = var.environment
-    platform    = "google-cloud-services"
-    team        = "platform-google-cloud-landing-zone"
+    env      = var.environment
+    platform = "google-cloud-services"
+    team     = "platform-google-cloud-landing-zone"
   }
 
   name       = "${local.domain_environment}-gcp-osinfra-io"
