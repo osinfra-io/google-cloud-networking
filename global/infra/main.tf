@@ -44,7 +44,7 @@ module "project" {
 # https://github.com/osinfra-io/terraform-google-cloud-dns
 
 module "private_dns" {
-  source = "github.com/osinfra-io/terraform-google-cloud-dns//global"
+  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.0"
 
   dns_name = "${local.domain_environment}.gcp-priv.osinfra.io."
 
@@ -65,7 +65,7 @@ module "private_dns" {
 }
 
 module "public_dns" {
-  source = "github.com/osinfra-io/terraform-google-cloud-dns//global"
+  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.0"
 
   dns_name = "${local.domain_environment}.gcp.osinfra.io."
 
