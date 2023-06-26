@@ -34,6 +34,10 @@ module "project" {
   }
 
   prefix = "plt-lz"
+
+  services = [
+    "dns.googleapis.com"
+  ]
 }
 
 # Google Cloud DNS Module (osinfra.io)
