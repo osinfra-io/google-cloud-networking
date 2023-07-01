@@ -10,64 +10,34 @@
 
 ## Repository Description
 
-This repository manages things like networking and other common services that can be shared across an organization. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
-
-## <img align="left" width="35" height="35" src="https://user-images.githubusercontent.com/1610100/209340481-2a74c148-f10d-4192-8eae-c88645663824.png"> Team Topologies
-
->Simple but comprehensive information for the platform provides a single entry point for anyone wanting to know more about the services, report an issue, or find out the current status, roadmap, etc. - [Team Topologies: Thin Platform Template](https://github.com/TeamTopologies/Thin-Platform-template)
+This repository manages resources like VPC, subnet, DNS, Kubernetes, and other common resources that can be shared across an organization. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
 
 ### 🏭 Platform Information
 
-- Documentation: [docs.osinfra.io](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone)
-- Live status page:
-
-### 🔩 Service Interfaces
-
-- [Add or update Kubernetes networking resources](https://github.com/osinfra-io/google-cloud-services/issues/new?assignees=&labels=enhancement%2Cgood+first+issue&projects=&template=add-update-k8s-networking-resources.yml&title=%F0%9F%94%A9+Add+or+update+Kubernetes+networking+resources)
-
-### 🕙 Response Times
-
-- Responsible team: [Platform - Google Cloud Landing Zone](https://github.com/orgs/osinfra-io/teams/platform-google-cloud-landing-zone)
-- Response time for incidents: `60 minutes`
-- Response time for other incidents: `120 minutes`
-- Response time for support:  `60 minutes`
-- Response time for feedback: `30 minutes`
-
-### 🗺️ Roadmap
-
-- Link to the roadmap: [GitHub Project](https://github.com/orgs/osinfra-io/projects/1/views/7)
-
-### 🗨️ Communication Channels
-
-#### To report a possible incident
-
-Contact exclusively via:
-
-- Discord: [Platform - Google Cloud Landing Zone](https://discord.gg/YPg4AmMDvF)
-- Phone number:
-
-#### To ask for support or provide feedback
-
-Contact via any of these:
-
-- Discord: [Platform - Google Cloud Landing Zone](https://discord.gg/YPg4AmMDvF)
-- Email address: [platform-google-cloud-landing-zone@osinfra.io](mailto:platform-google-cloud-landing-zone@osinfra.io)
-- Phone number:
-- Office hours (EST): `Weekdays 5:00 PM - 10:00 PM` `Weekends 8:00 AM - 5:00 PM`
+- Documentation: [docs.osinfra.io](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone/google-cloud-shared-resources)
+- Service Interfaces: [github.com](https://github.com/osinfra-io/google-cloud-shared-resources/issues/new/choose)
 
 ## <img align="left" width="35" height="35" src="https://github.com/osinfra-io/github-organization-management/assets/1610100/39d6ae3b-ccc2-42db-92f1-276a5bc54e65"> Development
 
->Open Source Infrastructure (as code) is a development model for infrastructure that focuses on open collaboration applying relative lessons learned from software development practices that organizations can use internally at scale. - [Open Source Infrastructure (as Code)](https://www.osinfra.io)
+>Open Source Infrastructure (as code) is a development model for infrastructure that focuses on open collaboration applying relative lessons learned from software development practices that organizations can use internally at scale. Our focus is on the core fundamental practice of platform engineering, Infrastructure as Code. - [Open Source Infrastructure (as Code)](https://www.osinfra.io)
 
-To avoid slowing down [stream-aligned](https://teamtopologies.com/key-concepts) teams, we want to open up the possibility for contributions. The Open Source Infrastructure (as Code) model allows team members external to the platform team to contribute with only a slight increase in cognitive load. This section is for developers who want to contribute to this repository describing the tools used, the skills, and the knowledge required, along with Terraform documentation.
+To avoid slowing down stream-aligned teams, we want to open up the possibility for contributions. The Open Source Infrastructure (as Code) model allows team members external to the platform team to contribute with only a slight increase in cognitive load. This section is for developers who want to contribute to this repository describing the tools used, the skills, and the knowledge required, along with Terraform documentation.
 
 See the documentation for setting up a local development environment [here](https://docs.osinfra.io/development-setup).
 
 ### 🛠️ Tools
 
+- [infracost](https://github.com/infracost/infracost)
 - [pre-commit](https://github.com/pre-commit/pre-commit)
 - [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+
+### 📋 Skills and Knowledge
+
+Links to documentation and other resources required to develop and iterate in this repository successfully.
+
+- [vpc](https://cloud.google.com/vpc/docs)
+- [subnets](https://cloud.google.com/vpc/docs/subnets)
 
 ### 📓 Terraform Documentation
 
