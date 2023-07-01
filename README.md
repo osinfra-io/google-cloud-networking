@@ -12,7 +12,7 @@
 
 This repository manages resources like VPC, subnet, DNS, Kubernetes, and other common resources that can be shared across an organization. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
 
-### 🏭 Platform Information
+## 🏭 Platform Information
 
 - Documentation: [docs.osinfra.io](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone/google-cloud-shared-resources)
 - Service Interfaces: [github.com](https://github.com/osinfra-io/google-cloud-shared-resources/issues/new/choose)
@@ -25,21 +25,21 @@ To avoid slowing down stream-aligned teams, we want to open up the possibility f
 
 See the documentation for setting up a local development environment [here](https://docs.osinfra.io/fundamentals/development-setup).
 
-### 🛠️ Tools
+## 🛠️ Tools
 
 - [infracost](https://github.com/infracost/infracost)
 - [pre-commit](https://github.com/pre-commit/pre-commit)
 - [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
 
-### 📋 Skills and Knowledge
+## 📋 Skills and Knowledge
 
 Links to documentation and other resources required to develop and iterate in this repository successfully.
 
 - [vpc](https://cloud.google.com/vpc/docs)
 - [subnets](https://cloud.google.com/vpc/docs/subnets)
 
-### 📓 Terraform Documentation
+## 📓 Terraform Documentation
 
 - [global](global/infra/README.md)
 - [regional](regional/infra/README.md)
