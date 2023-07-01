@@ -27,21 +27,21 @@ To avoid slowing down stream-aligned teams, we want to open up the possibility f
 
 See the documentation for setting up a local development environment [here](https://docs.osinfra.io/fundamentals/development-setup).
 
-## 🛠️ Tools
+### 🛠️ Tools
 
 - [infracost](https://github.com/infracost/infracost)
 - [pre-commit](https://github.com/pre-commit/pre-commit)
 - [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
 
-## 📋 Skills and Knowledge
+### 📋 Skills and Knowledge
 
 Links to documentation and other resources required to develop and iterate in this repository successfully.
 
 - [vpc](https://cloud.google.com/vpc/docs)
 - [subnets](https://cloud.google.com/vpc/docs/subnets)
 
-## 📓 Terraform Documentation
+### 📓 Terraform Documentation
 
 - [global](global/infra/README.md)
 - [regional](regional/infra/README.md)
