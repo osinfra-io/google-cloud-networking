@@ -23,7 +23,7 @@ module "project" {
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
   cost_center                     = "x001"
-  description                     = "services"
+  description                     = "networking"
   environment                     = local.environment_short
   folder_id                       = var.folder_id
 
