@@ -22,9 +22,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: non-production
       github_environment: "Non-Production Infrastructure: Global"
-      service_account: plt-lz-services-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/non-production.tfvars
-      terraform_state_bucket: plt-lz-services-3bfe-nonprod
+      terraform_state_bucket: plt-lz-networking-3bfe-nonprod
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: global-non-production
       working_directory: global/infra
@@ -43,9 +43,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: us-east1-non-production
       github_environment: "Non-Production Infrastructure: Regional - us-east1"
-      service_account: plt-lz-services-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east1-non-production.tfvars
-      terraform_state_bucket: plt-lz-services-3bfe-nonprod
+      terraform_state_bucket: plt-lz-networking-3bfe-nonprod
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east1-non-production
       working_directory: regional/infra
@@ -63,9 +63,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: us-east4-non-production
       github_environment: "Non-Production Infrastructure: Regional - us-east4"
-      service_account: plt-lz-services-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east4-non-production.tfvars
-      terraform_state_bucket: plt-lz-services-3bfe-nonprod
+      terraform_state_bucket: plt-lz-networking-3bfe-nonprod
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east4-non-production
       working_directory: regional/infra

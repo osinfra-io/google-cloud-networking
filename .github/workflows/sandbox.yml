@@ -24,9 +24,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: sandbox
       github_environment: "Sandbox Infrastructure: Global"
-      service_account: plt-lz-services-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/sandbox.tfvars
-      terraform_state_bucket: plt-lz-services-2c8b-sb
+      terraform_state_bucket: plt-lz-networking-2c8b-sb
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: global-sandbox
       working_directory: global/infra
@@ -45,9 +45,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: us-east1-sandbox
       github_environment: "Sandbox Infrastructure: Regional - us-east1"
-      service_account: plt-lz-services-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east1-sandbox.tfvars
-      terraform_state_bucket: plt-lz-services-2c8b-sb
+      terraform_state_bucket: plt-lz-networking-2c8b-sb
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east1-sandbox
       working_directory: regional/infra
@@ -65,9 +65,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: us-east4-sandbox
       github_environment: "Sandbox Infrastructure: Regional - us-east4"
-      service_account: plt-lz-services-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east4-sandbox.tfvars
-      terraform_state_bucket: plt-lz-services-2c8b-sb
+      terraform_state_bucket: plt-lz-networking-2c8b-sb
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east4-sandbox
       working_directory: regional/infra

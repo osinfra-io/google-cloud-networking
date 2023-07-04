@@ -4,55 +4,55 @@
 version: 0.1
 
 projects:
-  - name: "google-cloud-services - Sandbox Infrastructure: global"
+  - name: "google-cloud-networking - Sandbox Infrastructure: global"
     path: global/infra
     terraform_var_files:
       - tfvars/sandbox.tfvars
     usage_file: global/infra/infracost/sandbox.yml
 
-  - name: "google-cloud-services - Sandbox Infrastructure: us-east1"
+  - name: "google-cloud-networking - Sandbox Infrastructure: us-east1"
     path: regional/infra
     terraform_var_files:
       - tfvars/us-east1-sandbox.tfvars
     usage_file: regional/infra/infracost/us-east1-sandbox.yml
 
-  - name: "google-cloud-services - Sandbox Infrastructure: us-east4"
+  - name: "google-cloud-networking - Sandbox Infrastructure: us-east4"
     path: regional/infra
     terraform_var_files:
       - tfvars/us-east4-sandbox.tfvars
     usage_file: regional/infra/infracost/us-east4-sandbox.yml
 
-  - name: "google-cloud-services - Non-Production Infrastructure: global"
+  - name: "google-cloud-networking - Non-Production Infrastructure: global"
     path: global/infra
     terraform_var_files:
       - tfvars/non-production.tfvars
     usage_file: global/infra/infracost/non-production.yml
 
-  - name: "google-cloud-services - Non-Production Infrastructure: us-east1"
+  - name: "google-cloud-networking - Non-Production Infrastructure: us-east1"
     path: regional/infra
     terraform_var_files:
       - tfvars/us-east1-non-production.tfvars
     usage_file: regional/infra/infracost/us-east1-non-production.yml
 
-  - name: "google-cloud-services - Non-Production Infrastructure: us-east4"
+  - name: "google-cloud-networking - Non-Production Infrastructure: us-east4"
     path: regional/infra
     terraform_var_files:
       - tfvars/us-east4-non-production.tfvars
     usage_file: regional/infra/infracost/us-east4-non-production.yml
 
-  - name: "google-cloud-services - Production Infrastructure: global"
+  - name: "google-cloud-networking - Production Infrastructure: global"
     path: global/infra
     terraform_var_files:
       - tfvars/production.tfvars
     usage_file: global/infra/infracost/production.yml
 
-  - name: "google-cloud-services - Production Infrastructure: us-east1"
+  - name: "google-cloud-networking - Production Infrastructure: us-east1"
     path: regional/infra
     terraform_var_files:
       - tfvars/us-east1-production.tfvars
     usage_file: regional/infra/infracost/us-east1-production.yml
 
-  - name: "google-cloud-services - Production Infrastructure: us-east4"
+  - name: "google-cloud-networking - Production Infrastructure: us-east4"
     path: regional/infra
     terraform_var_files:
       - tfvars/us-east4-production.tfvars

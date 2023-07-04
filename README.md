@@ -1,8 +1,8 @@
-# <img align="left" width="45" height="45" src="https://github.com/osinfra-io/google-cloud-services/assets/1610100/59b781d4-46a3-4c57-b5ac-200de6bf8e76"> Google Cloud Platform - Services
+# <img align="left" width="45" height="45" src="https://github.com/osinfra-io/google-cloud-networking/assets/1610100/59b781d4-46a3-4c57-b5ac-200de6bf8e76"> Google Cloud Platform - Networking
 
-**[GitHub Actions](https://github.com/osinfra-io/google-cloud-services/actions):**
+**[GitHub Actions](https://github.com/osinfra-io/google-cloud-networking/actions):**
 
-[![Dependabot](https://github.com/osinfra-io/google-cloud-services/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-services/actions/workflows/dependabot.yml)
+[![Dependabot](https://github.com/osinfra-io/google-cloud-networking/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-networking/actions/workflows/dependabot.yml)
 
 **[Infracost](https://www.infracost.io):**
 
@@ -10,12 +10,12 @@
 
 ## Repository Description
 
-This repository manages resources like VPC, subnet, DNS, Kubernetes, and other common resources that can be shared across an organization. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
+This repository manages networking resources like VPC, subnet, DNS, and NAT that can be shared across an organization. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
 
 ## 🏭 Platform Information
 
-- Documentation: [docs.osinfra.io](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone/google-cloud-shared-resources)
-- Service Interfaces: [github.com](https://github.com/osinfra-io/google-cloud-shared-resources/issues/new/choose)
+- Documentation: [docs.osinfra.io](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone/google-cloud-networking)
+- Service Interfaces: [github.com](https://github.com/osinfra-io/google-cloud-networking/issues/new/choose)
 
 ## <img align="left" width="35" height="35" src="https://github.com/osinfra-io/github-organization-management/assets/1610100/39d6ae3b-ccc2-42db-92f1-276a5bc54e65"> Development
 
