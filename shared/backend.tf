@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    prefix = "google-cloud-services"
+    prefix = "google-cloud-networking"
   }
 }

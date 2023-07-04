@@ -29,7 +29,8 @@ module "project" {
 
   labels = {
     env      = var.environment
-    platform = "google-cloud-services"
+    module   = "google-cloud-networking"
+    platform = "google-cloud-landing-zone"
     team     = "platform-google-cloud-landing-zone"
   }
 
@@ -49,9 +50,11 @@ module "private_dns" {
   dns_name = var.environment == "production" ? "gcp-priv.osinfra.io." : "${local.environment_short}.gcp-priv.osinfra.io."
 
   labels = {
-    env      = var.environment
-    platform = "google-cloud-services"
-    team     = "platform-google-cloud-landing-zone"
+    env         = var.environment
+    cost-center = "x001"
+    module      = "google-cloud-networking"
+    platform    = "google-cloud-landing-zone"
+    team        = "platform-google-cloud-landing-zone"
   }
 
   name = var.environment == "production" ? "gcp-priv-osinfra-io" : "${local.environment_short}-gcp-priv-osinfra-io"
@@ -70,9 +73,11 @@ module "public_dns" {
   dns_name = var.environment == "production" ? "gcp.osinfra.io." : "${local.environment_short}.gcp.osinfra.io."
 
   labels = {
-    env      = var.environment
-    platform = "google-cloud-services"
-    team     = "platform-google-cloud-landing-zone"
+    env         = var.environment
+    cost-center = "x001"
+    module      = "google-cloud-networking"
+    platform    = "google-cloud-landing-zone"
+    team        = "platform-google-cloud-landing-zone"
   }
 
   name       = var.environment == "production" ? "gcp-osinfra-io" : "${local.environment_short}-gcp-osinfra-io"

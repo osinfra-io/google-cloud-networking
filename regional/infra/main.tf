@@ -21,7 +21,7 @@ data "terraform_remote_state" "global" {
 
   config = {
     bucket = var.remote_bucket
-    prefix = "google-cloud-services"
+    prefix = "google-cloud-networking"
   }
 
   workspace = "global-${var.environment}"
