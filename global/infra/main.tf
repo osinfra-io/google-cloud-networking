@@ -94,3 +94,20 @@ module "vpc" {
   name    = "standard-shared"
   project = module.project.project_id
 }
+
+# Google Compute Shared VPC Host Project Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_host_project
+
+resource "google_compute_shared_vpc_host_project" "this" {
+  project = module.project.project_id
+}
+
+# Google Compute Shared VPC Service Project Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
+
+resource "google_compute_shared_vpc_service_project" "this" {
+  for_each = var.shared_vpc_service_projects
+
+  host_project    = google_compute_shared_vpc_host_project.this.project
+  service_project = each.value
+}

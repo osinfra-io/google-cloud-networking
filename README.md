@@ -39,6 +39,7 @@ See the documentation for setting up a local development environment [here](http
 Links to documentation and other resources required to develop and iterate in this repository successfully.
 
 - [vpc](https://cloud.google.com/vpc/docs)
+- [shared-vpc](https://cloud.google.com/vpc/docs/shared-vpc)
 - [subnets](https://cloud.google.com/vpc/docs/subnets)
 
 ### 📓 Terraform Documentation
