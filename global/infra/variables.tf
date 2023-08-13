@@ -25,6 +25,6 @@ variable "folder_id" {
 
 variable "shared_vpc_service_projects" {
   description = "The set of service projects to attach to the shared VPC"
-  type        = list(set(string))
+  type        = set(string)
   default     = []
 }
