@@ -16,7 +16,7 @@ No providers.
 | <a name="module_private_dns"></a> [private\_dns](#module\_private\_dns) | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.0 |
 | <a name="module_project"></a> [project](#module\_project) | github.com/osinfra-io/terraform-google-project | v0.1.1 |
 | <a name="module_public_dns"></a> [public\_dns](#module\_public\_dns) | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
 
 ## Resources
 
