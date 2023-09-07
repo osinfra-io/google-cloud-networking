@@ -76,7 +76,7 @@ module "project" {
 module "private_dns" {
   source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.0"
 
-  dns_name = var.environment == "production" ? "gcp-priv.osinfra.io." : "${var.environment}.gcp-priv.osinfra.io."
+  dns_name = var.environment == "prod" ? "gcp-priv.osinfra.io." : "${var.environment}.gcp-priv.osinfra.io."
 
   labels = {
     env         = var.environment
@@ -86,7 +86,7 @@ module "private_dns" {
     team        = "platform-google-cloud-landing-zone"
   }
 
-  name = var.environment == "production" ? "gcp-priv-osinfra-io" : "${var.environment}-gcp-priv-osinfra-io"
+  name = var.environment == "prod" ? "gcp-priv-osinfra-io" : "${var.environment}-gcp-priv-osinfra-io"
 
   private_visibility_config_networks = [
     module.vpc.self_link
@@ -99,7 +99,7 @@ module "private_dns" {
 module "public_dns" {
   source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.0"
 
-  dns_name = var.environment == "production" ? "gcp.osinfra.io." : "${var.environment}.gcp.osinfra.io."
+  dns_name = var.environment == "prod" ? "gcp.osinfra.io." : "${var.environment}.gcp.osinfra.io."
 
   labels = {
     env         = var.environment
@@ -109,7 +109,7 @@ module "public_dns" {
     team        = "platform-google-cloud-landing-zone"
   }
 
-  name       = var.environment == "production" ? "gcp-osinfra-io" : "${var.environment}-gcp-osinfra-io"
+  name       = var.environment == "prod" ? "gcp-osinfra-io" : "${var.environment}-gcp-osinfra-io"
   project    = module.project.project_id
   visibility = "public"
 }
