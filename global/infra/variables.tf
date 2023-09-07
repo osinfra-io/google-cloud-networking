@@ -25,9 +25,9 @@ variable "datadog_app_key" {
 }
 
 variable "environment" {
-  description = "The environment for example: `sandbox`, `non-production`, `production`"
+  description = "The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production)"
   type        = string
-  default     = "sandbox"
+  default     = "sb"
 }
 
 variable "folder_id" {
