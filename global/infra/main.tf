@@ -64,9 +64,10 @@ module "project" {
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
+    "dns.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
-    "dns.googleapis.com"
+    "servicenetworking.googleapis.com"
   ]
 }
 
@@ -123,4 +124,26 @@ module "vpc" {
   name       = "standard-shared"
   project    = module.project.project_id
   shared_vpc = true
+}
+
+# Compute Global Address Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address
+
+resource "google_compute_global_address" "service_network_peering_range" {
+  address       = "172.16.0.0"
+  address_type  = "INTERNAL"
+  name          = "service-network-peering-range"
+  network       = module.vpc.self_link
+  prefix_length = 16
+  project       = module.project.project_id
+  purpose       = "VPC_PEERING"
+}
+
+# Service Networking Connection Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
+
+resource "google_service_networking_connection" "this" {
+  network                 = module.vpc.self_link
+  reserved_peering_ranges = [google_compute_global_address.service_network_peering_range.name]
+  service                 = "servicenetworking.googleapis.com"
 }
