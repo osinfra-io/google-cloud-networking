@@ -29,19 +29,19 @@ provider "datadog" {
 # Datadog Google Cloud Platform Integration Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-datadog-google-integration
 
-module "datadog" {
-  source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.0"
+# module "datadog" {
+#   source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.0"
 
-  api_key         = var.datadog_api_key
-  is_cspm_enabled = true
-  project         = module.project.project_id
-}
+#   api_key         = var.datadog_api_key
+#   is_cspm_enabled = true
+#   project         = module.project.project_id
+# }
 
 # Google Project Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-project
 
 module "project" {
-  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.2"
+  source = "github.com/osinfra-io/terraform-google-project//global?ref=v0.1.6"
 
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
