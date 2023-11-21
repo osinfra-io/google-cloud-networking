@@ -9,14 +9,14 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.6.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 5.7.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_private_dns"></a> [private\_dns](#module\_private\_dns) | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.0 |
-| <a name="module_project"></a> [project](#module\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.2 |
+| <a name="module_project"></a> [project](#module\_project) | github.com/osinfra-io/terraform-google-project//global | v0.1.7 |
 | <a name="module_public_dns"></a> [public\_dns](#module\_public\_dns) | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
 
@@ -25,6 +25,8 @@ No requirements.
 | Name | Type |
 |------|------|
 | [google_compute_global_address.service_network_peering_range](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address) | resource |
+| [google_project_iam_member.container_engine_firewall_management](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.container_engine_service_agent_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 | [google_service_networking_connection.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection) | resource |
 
 ## Inputs
@@ -37,6 +39,7 @@ No requirements.
 | <a name="input_datadog_app_key"></a> [datadog\_app\_key](#input\_datadog\_app\_key) | Datadog APP key | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production) | `string` | `"sb"` | no |
 | <a name="input_folder_id"></a> [folder\_id](#input\_folder\_id) | The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified | `string` | n/a | yes |
+| <a name="input_kubernetes_service_projects"></a> [kubernetes\_service\_projects](#input\_kubernetes\_service\_projects) | The set of Kubernetes service projects | `set(string)` | `[]` | no |
 
 ## Outputs
 

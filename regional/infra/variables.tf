@@ -4,6 +4,12 @@ variable "environment" {
   default     = "sandbox"
 }
 
+variable "kubernetes_service_projects" {
+  description = "The set of Kubernetes service projects"
+  type        = set(string)
+  default     = []
+}
+
 variable "region" {
   description = "The region for this subnetwork"
   type        = string

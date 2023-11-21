@@ -139,6 +139,25 @@ resource "google_compute_global_address" "service_network_peering_range" {
   purpose       = "VPC_PEERING"
 }
 
+# Project IAM Member Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam_member
+
+resource "google_project_iam_member" "container_engine_firewall_management" {
+  for_each = var.kubernetes_service_projects
+
+  member  = "serviceAccount:service-${each.key}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.project.project_id
+  role    = "organizations/163313809793/roles/kubernetes.hostFirewallManagement"
+}
+
+resource "google_project_iam_member" "container_engine_service_agent_user" {
+  for_each = var.kubernetes_service_projects
+
+  member  = "serviceAccount:service-${each.key}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.project.project_id
+  role    = "roles/container.hostServiceAgentUser"
+}
+
 # Service Networking Connection Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
 
