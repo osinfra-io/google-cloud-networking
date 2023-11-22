@@ -37,8 +37,8 @@ variable "folder_id" {
 
 variable "kubernetes_service_projects" {
   description = "The map of Kubernetes service project IDs and numbers"
-  type = object({
+  type = map(object({
     number = optional(number)
-  })
+  }))
   default = {}
 }
