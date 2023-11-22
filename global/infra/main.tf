@@ -155,7 +155,7 @@ resource "google_compute_shared_vpc_service_project" "this" {
 resource "google_project_iam_member" "container_engine_firewall_management" {
   for_each = var.kubernetes_service_projects
 
-  member  = "serviceAccount:service-${each.key}@container-engine-robot.iam.gserviceaccount.com"
+  member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
   project = module.project.project_id
   role    = "organizations/163313809793/roles/kubernetes.hostFirewallManagement"
 }
@@ -163,7 +163,7 @@ resource "google_project_iam_member" "container_engine_firewall_management" {
 resource "google_project_iam_member" "container_engine_service_agent_user" {
   for_each = var.kubernetes_service_projects
 
-  member  = "serviceAccount:service-${each.key}@container-engine-robot.iam.gserviceaccount.com"
+  member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
   project = module.project.project_id
   role    = "roles/container.hostServiceAgentUser"
 }
