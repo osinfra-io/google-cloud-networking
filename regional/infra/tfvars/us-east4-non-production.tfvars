@@ -1,4 +1,11 @@
-environment   = "non-production"
+environment = "non-production"
+
+kubernetes_service_projects = {
+  "plt-k8s-tf33-nonprod" = {
+    number = 1036446604184
+  }
+}
+
 region        = "us-east4"
 remote_bucket = "plt-lz-networking-3bfe-nonprod"
 

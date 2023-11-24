@@ -1,4 +1,11 @@
-environment   = "production"
+environment = "production"
+
+kubernetes_service_projects = {
+  "plt-k8s-tf10-prod" = {
+    number = 502462287439
+  }
+}
+
 region        = "us-east1"
 remote_bucket = "plt-lz-networking-e194-prod"
 
