@@ -72,7 +72,7 @@ module "subnet" {
       ip_cidr_range = each.value.services_ip_cidr_range
     },
     {
-      range_name    = "service-k8s-pods-${var.region}"
+      range_name    = "services-k8s-pods-${var.region}"
       ip_cidr_range = each.value.pod_ip_cidr_range
     }
   ]
