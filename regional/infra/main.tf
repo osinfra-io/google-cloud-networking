@@ -84,7 +84,7 @@ module "subnet" {
 resource "google_compute_subnetwork_iam_member" "cloud_services" {
   for_each = var.kubernetes_service_projects
 
-  member     = "serviceAccount:${each.key}@cloudservices.gserviceaccount.com"
+  member     = "serviceAccount:${each.value.number}@cloudservices.gserviceaccount.com"
   project    = local.global.project_id
   region     = var.region
   role       = "roles/compute.networkUser"
@@ -98,7 +98,7 @@ resource "google_compute_subnetwork_iam_member" "cloud_services" {
 resource "google_compute_subnetwork_iam_member" "container_engine" {
   for_each = var.kubernetes_service_projects
 
-  member     = "serviceAccount:service-${each.key}@container-engine-robot.iam.gserviceaccount.com"
+  member     = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
   project    = local.global.project_id
   region     = var.region
   role       = "roles/compute.networkUser"

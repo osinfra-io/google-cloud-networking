@@ -5,9 +5,11 @@ variable "environment" {
 }
 
 variable "kubernetes_service_projects" {
-  description = "The set of Kubernetes service projects"
-  type        = set(string)
-  default     = []
+  description = "The map of Kubernetes service project IDs and numbers"
+  type = map(object({
+    number = optional(number)
+  }))
+  default = {}
 }
 
 variable "region" {

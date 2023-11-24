@@ -32,7 +32,7 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment for example: `sandbox`, `non-production`, `production` | `string` | `"sandbox"` | no |
-| <a name="input_kubernetes_service_projects"></a> [kubernetes\_service\_projects](#input\_kubernetes\_service\_projects) | The set of Kubernetes service projects | `set(string)` | `[]` | no |
+| <a name="input_kubernetes_service_projects"></a> [kubernetes\_service\_projects](#input\_kubernetes\_service\_projects) | The map of Kubernetes service project IDs and numbers | <pre>map(object({<br>    number = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region for this subnetwork | `string` | n/a | yes |
 | <a name="input_remote_bucket"></a> [remote\_bucket](#input\_remote\_bucket) | The remote bucket the `terraform_remote_state` data source retrieves the state from | `string` | n/a | yes |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | The map of subnets to create | <pre>map(object({<br>    ip_cidr_range          = string<br>    master_ip_cidr_range   = string<br>    pod_ip_cidr_range      = string<br>    services_ip_cidr_range = string<br>  }))</pre> | n/a | yes |
