@@ -51,10 +51,10 @@ module "project" {
   folder_id                       = var.folder_id
 
   labels = {
-    env      = var.environment
-    module   = "google-cloud-networking"
-    platform = "google-cloud-landing-zone"
-    team     = "platform-google-cloud-landing-zone"
+    env        = var.environment
+    repository = "google-cloud-networking"
+    platform   = "google-cloud-landing-zone"
+    team       = "platform-google-cloud-landing-zone"
   }
 
   prefix = "plt-lz"
@@ -83,7 +83,7 @@ module "private_dns" {
   labels = {
     env         = var.environment
     cost-center = "x001"
-    module      = "google-cloud-networking"
+    repository  = "google-cloud-networking"
     platform    = "google-cloud-landing-zone"
     team        = "platform-google-cloud-landing-zone"
   }
@@ -106,7 +106,7 @@ module "public_dns" {
   labels = {
     env         = var.environment
     cost-center = "x001"
-    module      = "google-cloud-networking"
+    repository  = "google-cloud-networking"
     platform    = "google-cloud-landing-zone"
     team        = "platform-google-cloud-landing-zone"
   }
