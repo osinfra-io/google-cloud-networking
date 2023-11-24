@@ -27,6 +27,9 @@ data "terraform_remote_state" "global" {
   workspace = "global-${var.environment}"
 }
 
+# Google Cloud NAT Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-cloud-nat
+
 module "cloud_nat" {
   source = "github.com/osinfra-io/terraform-google-cloud-nat//regional?ref=v0.1.0"
 
@@ -38,6 +41,9 @@ module "cloud_nat" {
     module.subnet
   ]
 }
+
+# Google Subnet Module (osinfra.io)
+# https://github.com/osinfra-io/terraform-google-subnet
 
 module "subnet" {
   source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.0"
@@ -66,8 +72,39 @@ module "subnet" {
       ip_cidr_range = each.value.services_ip_cidr_range
     },
     {
-      range_name    = "service-k8s-pods-${var.region}"
+      range_name    = "services-k8s-pods-${var.region}"
       ip_cidr_range = each.value.pod_ip_cidr_range
     }
+  ]
+}
+
+# Compute Subnetwork IAM Member Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
+
+resource "google_compute_subnetwork_iam_member" "cloud_services" {
+  for_each = var.kubernetes_service_projects
+
+  member     = "serviceAccount:${each.value.number}@cloudservices.gserviceaccount.com"
+  project    = local.global.project_id
+  region     = var.region
+  role       = "roles/compute.networkUser"
+  subnetwork = "services-${var.region}"
+
+  depends_on = [
+    module.subnet
+  ]
+}
+
+resource "google_compute_subnetwork_iam_member" "container_engine" {
+  for_each = var.kubernetes_service_projects
+
+  member     = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
+  project    = local.global.project_id
+  region     = var.region
+  role       = "roles/compute.networkUser"
+  subnetwork = "services-${var.region}"
+
+  depends_on = [
+    module.subnet
   ]
 }

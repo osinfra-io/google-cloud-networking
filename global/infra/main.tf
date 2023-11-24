@@ -51,10 +51,10 @@ module "project" {
   folder_id                       = var.folder_id
 
   labels = {
-    env      = var.environment
-    module   = "google-cloud-networking"
-    platform = "google-cloud-landing-zone"
-    team     = "platform-google-cloud-landing-zone"
+    env        = var.environment
+    repository = "google-cloud-networking"
+    platform   = "google-cloud-landing-zone"
+    team       = "platform-google-cloud-landing-zone"
   }
 
   prefix = "plt-lz"
@@ -64,6 +64,7 @@ module "project" {
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
+    "container.googleapis.com",
     "dns.googleapis.com",
     "iam.googleapis.com",
     "monitoring.googleapis.com",
@@ -82,7 +83,7 @@ module "private_dns" {
   labels = {
     env         = var.environment
     cost-center = "x001"
-    module      = "google-cloud-networking"
+    repository  = "google-cloud-networking"
     platform    = "google-cloud-landing-zone"
     team        = "platform-google-cloud-landing-zone"
   }
@@ -105,7 +106,7 @@ module "public_dns" {
   labels = {
     env         = var.environment
     cost-center = "x001"
-    module      = "google-cloud-networking"
+    repository  = "google-cloud-networking"
     platform    = "google-cloud-landing-zone"
     team        = "platform-google-cloud-landing-zone"
   }
@@ -137,6 +138,35 @@ resource "google_compute_global_address" "service_network_peering_range" {
   prefix_length = 16
   project       = module.project.project_id
   purpose       = "VPC_PEERING"
+}
+
+# Compute Shared VPC Service Project Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
+
+resource "google_compute_shared_vpc_service_project" "this" {
+  for_each = var.kubernetes_service_projects
+
+  host_project    = module.project.project_id
+  service_project = each.key
+}
+
+# Project IAM Member Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam_member
+
+resource "google_project_iam_member" "container_engine_firewall_management" {
+  for_each = var.kubernetes_service_projects
+
+  member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.project.project_id
+  role    = "organizations/163313809793/roles/kubernetes.hostFirewallManagement"
+}
+
+resource "google_project_iam_member" "container_engine_service_agent_user" {
+  for_each = var.kubernetes_service_projects
+
+  member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
+  project = module.project.project_id
+  role    = "roles/container.hostServiceAgentUser"
 }
 
 # Service Networking Connection Resource

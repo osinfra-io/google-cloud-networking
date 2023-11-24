@@ -4,6 +4,14 @@ variable "environment" {
   default     = "sandbox"
 }
 
+variable "kubernetes_service_projects" {
+  description = "The map of Kubernetes service project IDs and numbers"
+  type = map(object({
+    number = optional(number)
+  }))
+  default = {}
+}
+
 variable "region" {
   description = "The region for this subnetwork"
   type        = string

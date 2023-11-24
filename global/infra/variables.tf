@@ -34,3 +34,11 @@ variable "folder_id" {
   description = "The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified"
   type        = string
 }
+
+variable "kubernetes_service_projects" {
+  description = "The map of Kubernetes service project IDs and numbers"
+  type = map(object({
+    number = optional(number)
+  }))
+  default = {}
+}

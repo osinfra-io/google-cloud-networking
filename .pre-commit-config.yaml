@@ -14,6 +14,7 @@ repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.83.6
     hooks:
+
       - id: terraform_fmt
 
       # To speed up local validation add the following to your ~/.zshrc:
@@ -28,3 +29,58 @@ repos:
           - --hook-config=--path-to-file=README.md
           - --hook-config=--add-to-exiting-file=true
           - --hook-config=--create-file-if-not-exist=false
+
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=global/infra/infracost/sandbox.yml
+          - --args=--path=global/infra
+          - --args=--terraform-var-file=tfvars/sandbox.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=global/infra/infracost/non-production.yml
+          - --args=--path=global/infra
+          - --args=--terraform-var-file=tfvars/non-production.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=global/infra/infracost/production.yml
+          - --args=--path=global/infra
+          - --args=--terraform-var-file=tfvars/production.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=regional/infra/infracost/us-east1-sandbox.yml
+          - --args=--path=regional/infra
+          - --args=--terraform-var-file=tfvars/us-east1-sandbox.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=regional/infra/infracost/us-east1-non-production.yml
+          - --args=--path=regional/infra
+          - --args=--terraform-var-file=tfvars/us-east1-non-production.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=regional/infra/infracost/us-east1-production.yml
+          - --args=--path=regional/infra
+          - --args=--terraform-var-file=tfvars/us-east1-production.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=regional/infra/infracost/us-east4-sandbox.yml
+          - --args=--path=regional/infra
+          - --args=--terraform-var-file=tfvars/us-east4-sandbox.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=regional/infra/infracost/us-east4-non-production.yml
+          - --args=--path=regional/infra
+          - --args=--terraform-var-file=tfvars/us-east4-non-production.tfvars
+      - id: infracost_breakdown
+        args:
+          - --args=--sync-usage-file
+          - --args=--usage-file=regional/infra/infracost/us-east4-production.yml
+          - --args=--path=regional/infra
+          - --args=--terraform-var-file=tfvars/us-east4-production.tfvars
