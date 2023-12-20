@@ -6,11 +6,19 @@ labels:
   - good first issue
 
 body:
+  - type: textarea
+    id: markdown-text
+    attributes:
+      label: "Developer notes:"
+      value: "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/osinfra-io/github-terraform-codespace)"
+    validations:
+      required: true
+      
   - type: input
     id: email-address
     attributes:
       label: "Email address:"
-      description: How can we get in touch with you if we need more info?
+      description: How can we contact you if we need more info?
       placeholder: user-name@osinfra.io
     validations:
       required: true
@@ -38,6 +46,6 @@ body:
     id: comments
     attributes:
       label: "Additional comments:"
-      description: Anything else you'd like to add that would help us understand your request better?
+      description: Is there anything else you'd like to add to help us understand your request better?
     validations:
       required: false
