@@ -15,7 +15,7 @@ body:
         [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/osinfra-io/github-terraform-codespace)
     validations:
       required: true
-      
+
   - type: input
     id: email-address
     attributes:
