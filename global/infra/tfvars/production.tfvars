@@ -2,7 +2,7 @@ environment                     = "prod"
 cis_2_2_logging_sink_project_id = "plt-lz-audit01-tf91-prod"
 
 dns_records_admins = [
-  "plt-k8s-github@ptl-lz-terraform-tf05-prod.iam.gserviceaccount.com"
+  "plt-k8s-github@ptl-lz-terraform-tf62-prod.iam.gserviceaccount.com"
 ]
 
 folder_id = "1033174574192"
