@@ -24,6 +24,12 @@ variable "datadog_app_key" {
   sensitive   = true
 }
 
+variable "dns_records_admins" {
+  description = "The set of service accounts that can administer DNS records in this project"
+  type        = set(string)
+  default     = []
+}
+
 variable "environment" {
   description = "The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production)"
   type        = string
