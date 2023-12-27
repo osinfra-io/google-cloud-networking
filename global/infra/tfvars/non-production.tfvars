@@ -7,7 +7,7 @@ dns_records_admins = [
 
 folder_id = "345391277536"
 
-kubernetes_service_projects = {
+vpc_service_projects = {
   "plt-k8s-tf33-nonprod" = {
     number = 1036446604184
   }
