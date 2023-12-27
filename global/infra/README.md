@@ -42,7 +42,7 @@ No requirements.
 | <a name="input_dns_records_admins"></a> [dns\_records\_admins](#input\_dns\_records\_admins) | The set of service accounts that can administer DNS records in this project | `set(string)` | `[]` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production) | `string` | `"sb"` | no |
 | <a name="input_folder_id"></a> [folder\_id](#input\_folder\_id) | The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified | `string` | n/a | yes |
-| <a name="input_kubernetes_service_projects"></a> [kubernetes\_service\_projects](#input\_kubernetes\_service\_projects) | The map of Kubernetes service project IDs and numbers | <pre>map(object({<br>    number = optional(number)<br>  }))</pre> | `{}` | no |
+| <a name="input_vpc_service_projects"></a> [vpc\_service\_projects](#input\_vpc\_service\_projects) | The map of Kubernetes service project IDs and numbers (The number should only be added if the project is a Kubernetes service project) | <pre>map(object({<br>    number = optional(number)<br>  }))</pre> | `{}` | no |
 
 ## Outputs
 

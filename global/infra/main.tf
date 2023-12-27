@@ -144,7 +144,7 @@ resource "google_compute_global_address" "service_network_peering_range" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
 
 resource "google_compute_shared_vpc_service_project" "this" {
-  for_each = var.kubernetes_service_projects
+  for_each = var.vpc_service_projects
 
   host_project    = module.project.project_id
   service_project = each.key
@@ -154,17 +154,17 @@ resource "google_compute_shared_vpc_service_project" "this" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam_member
 
 resource "google_project_iam_member" "container_engine_firewall_management" {
-  for_each = var.kubernetes_service_projects
+  for_each = { for k, v in var.vpc_service_projects : k => v if lookup(v, "number", null) != null }
 
-  member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
+  member  = "serviceAccount:service-${lookup(each.value, "number")}@container-engine-robot.iam.gserviceaccount.com"
   project = module.project.project_id
   role    = "organizations/163313809793/roles/kubernetes.hostFirewallManagement"
 }
 
 resource "google_project_iam_member" "container_engine_service_agent_user" {
-  for_each = var.kubernetes_service_projects
+  for_each = { for k, v in var.vpc_service_projects : k => v if lookup(v, "number", null) != null }
 
-  member  = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
+  member  = "serviceAccount:service-${lookup(each.value, "number")}@container-engine-robot.iam.gserviceaccount.com"
   project = module.project.project_id
   role    = "roles/container.hostServiceAgentUser"
 }

@@ -41,8 +41,8 @@ variable "folder_id" {
   type        = string
 }
 
-variable "kubernetes_service_projects" {
-  description = "The map of Kubernetes service project IDs and numbers"
+variable "vpc_service_projects" {
+  description = "The map of Kubernetes service project IDs and numbers (The number should only be added if the project is a Kubernetes service project)"
   type = map(object({
     number = optional(number)
   }))
