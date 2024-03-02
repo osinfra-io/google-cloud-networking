@@ -149,6 +149,30 @@ resource "google_compute_shared_vpc_service_project" "this" {
   host_project    = module.project.project_id
   service_project = each.key
 }
+# DNS Record Set Resource
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set
+
+resource "google_dns_record_set" "private" {
+  for_each = { for record in var.private_record_sets : join("-", [record.name, lower(record.type)]) => record }
+
+  managed_zone = module.private_dns.name
+  name         = "${each.value.name}.${module.private_dns.dns_name}"
+  project      = module.project.project_id
+  rrdatas      = each.value.rrdatas
+  ttl          = each.value.ttl
+  type         = each.value.type
+}
+
+resource "google_dns_record_set" "public" {
+  for_each = { for record in var.public_record_sets : join("-", [record.name, lower(record.type)]) => record }
+
+  managed_zone = module.public_dns.name
+  name         = "${each.value.name}.${module.public_dns.dns_name}"
+  project      = module.project.project_id
+  rrdatas      = each.value.rrdatas
+  ttl          = each.value.ttl
+  type         = each.value.type
+}
 
 # Project IAM Member Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam_member

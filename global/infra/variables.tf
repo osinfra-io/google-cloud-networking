@@ -41,6 +41,28 @@ variable "folder_id" {
   type        = string
 }
 
+variable "private_record_sets" {
+  description = "Private DNS record sets"
+  type = list(object({
+    name    = string
+    rrdatas = list(string)
+    type    = string
+    ttl     = number
+  }))
+  default = []
+}
+
+variable "public_record_sets" {
+  description = "Private DNS record sets"
+  type = list(object({
+    name    = string
+    rrdatas = list(string)
+    type    = string
+    ttl     = number
+  }))
+  default = []
+}
+
 variable "vpc_service_projects" {
   description = "The map of Kubernetes service project IDs and numbers (The number should only be added if the project is a Kubernetes service project)"
   type = map(object({
