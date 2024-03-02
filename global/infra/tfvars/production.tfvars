@@ -22,10 +22,10 @@ public_record_sets = [
   {
     name = "sb"
     rrdatas = [
-      "ns-cloud-e1.googledomains.com.",
-      "ns-cloud-e2.googledomains.com.",
-      "ns-cloud-e3.googledomains.com.",
-      "ns-cloud-e4.googledomains.com."
+      "ns-cloud-b1.googledomains.com.",
+      "ns-cloud-b2.googledomains.com.",
+      "ns-cloud-b3.googledomains.com.",
+      "ns-cloud-b4.googledomains.com."
     ]
     ttl  = 21600
     type = "NS"
