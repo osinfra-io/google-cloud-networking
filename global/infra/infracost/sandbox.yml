@@ -19,8 +19,8 @@ resource_type_default_usage:
   ## The following usage values apply to each resource of the given type, which is useful when you want to define defaults.
   ## All values are commented-out, you can uncomment resource types and customize as needed.
   ##
-  # google_dns_record_set:
-    # monthly_queries: 0 # Monthly DNS queries.
+  google_dns_record_set:
+    monthly_queries: 100 # Monthly DNS queries.
 # resource_usage:
   ##
   ## The following usage values apply to individual resources and override any value defined in the resource_type_default_usage section.
