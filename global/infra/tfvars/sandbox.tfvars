@@ -6,6 +6,15 @@ dns_records_admins = [
 
 folder_id = "13103602325"
 
+private_record_sets = [
+  {
+    name    = "test-a"
+    rrdatas = ["192.168.1.1"]
+    ttl     = 300
+    type    = "A"
+  }
+]
+
 vpc_service_projects = {
   "plt-backstage-tf3f-sb" = {}
   "plt-k8s-tfb4-sb" = {
