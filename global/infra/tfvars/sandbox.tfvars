@@ -8,7 +8,7 @@ folder_id = "13103602325"
 
 private_record_sets = [
   {
-    name    = "test-a"
+    name    = "test"
     rrdatas = ["192.168.1.1"]
     ttl     = 300
     type    = "A"

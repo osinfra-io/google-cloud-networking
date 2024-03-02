@@ -153,7 +153,7 @@ resource "google_compute_shared_vpc_service_project" "this" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set
 
 resource "google_dns_record_set" "private" {
-  for_each = { for record in var.private_record_sets : join("/", [record.name, record.type]) => record }
+  for_each = { for record in var.private_record_sets : join("-", [record.name, lower(record.type)]) => record }
 
   managed_zone = module.private_dns.name
   name         = "${each.value.name}.${module.private_dns.dns_name}"
@@ -164,7 +164,7 @@ resource "google_dns_record_set" "private" {
 }
 
 resource "google_dns_record_set" "public" {
-  for_each = { for record in var.public_record_sets : join("/", [record.name, record.type]) => record }
+  for_each = { for record in var.public_record_sets : join("-", [record.name, lower(record.type)]) => record }
 
   managed_zone = module.public_dns.name
   name         = "${each.value.name}.${module.public_dns.dns_name}"

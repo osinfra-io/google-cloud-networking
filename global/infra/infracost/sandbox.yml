@@ -26,7 +26,7 @@ resource_type_default_usage:
   ## The following usage values apply to individual resources and override any value defined in the resource_type_default_usage section.
   ## All values are commented-out, you can uncomment resources and customize as needed.
   ##
-  # google_dns_record_set.private["test-a/A"]:
+  # google_dns_record_set.private["test-a"]:
     # monthly_queries: 0 # Monthly DNS queries.
   # google_service_networking_connection.this:
     # monthly_egress_data_transfer_gb:
