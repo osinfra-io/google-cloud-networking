@@ -4,7 +4,8 @@ dns_records_admins = [
   "plt-k8s-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"
 ]
 
-folder_id = "13103602325"
+enable_datadog = true
+folder_id      = "13103602325"
 
 private_record_sets = [
   {
