@@ -1,6 +1,6 @@
 kubernetes_service_projects = {
-  "plt-k8s-tfb4-sb" = {
-    number = 102727685445
+  "plt-k8s-tf39-sb" = {
+    number = 362793201562
   }
 }
 
