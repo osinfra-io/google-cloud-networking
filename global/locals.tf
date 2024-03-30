@@ -5,6 +5,7 @@ locals {
   domain_environment = var.environment == "prod" ? "" : var.environment
 
   labels = {
+    cost-center = "x001"
     env        = var.environment
     repository = "google-cloud-networking"
     platform   = "google-cloud-landing-zone"
