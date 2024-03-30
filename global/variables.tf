@@ -30,6 +30,12 @@ variable "dns_records_admins" {
   default     = []
 }
 
+variable "enable_datadog" {
+  description = "Enable Datadog integration"
+  type        = bool
+  default     = false
+}
+
 variable "environment" {
   description = "The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production)"
   type        = string

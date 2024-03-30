@@ -16,20 +16,20 @@ permissions:
   id-token: write
 
 jobs:
-  global_infra:
-    name: "Infra: global"
+  global:
+    name: "Global"
     uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.2.1
     if: github.actor != 'dependabot[bot]'
     with:
       checkout_ref: ${{ github.ref }}
       environment: sandbox
-      github_environment: "Sandbox Infrastructure: Global"
+      github_environment: "Sandbox: Global"
       service_account: plt-lz-networking-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/sandbox.tfvars
       terraform_state_bucket: plt-lz-networking-2c8b-sb
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: global-sandbox
-      working_directory: global/infra
+      working_directory: global
       workload_identity_provider: projects/746490462722/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
@@ -39,41 +39,41 @@ jobs:
         -var=datadog_api_key=${{ secrets.DATADOG_API_KEY }}
         -var=datadog_app_key=${{ secrets.DATADOG_APP_KEY }}
 
-  us_east1_infra:
-    name: "Infra: us-east1"
+  us_east1:
+    name: "Regional: us-east1"
     uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.2.1
     if: github.actor != 'dependabot[bot]'
-    needs: global_infra
+    needs: global
     with:
       checkout_ref: ${{ github.ref }}
       environment: us-east1-sandbox
-      github_environment: "Sandbox Infrastructure: Regional - us-east1"
+      github_environment: "Sandbox: Regional - us-east1"
       service_account: plt-lz-networking-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east1-sandbox.tfvars
       terraform_state_bucket: plt-lz-networking-2c8b-sb
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east1-sandbox
-      working_directory: regional/infra
+      working_directory: regional
       workload_identity_provider: projects/746490462722/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
       infracost_api_key: ${{ secrets.INFRACOST_API_KEY }}
 
-  us_east4_infra:
-    name: "Infra: us-east4"
+  us_east4:
+    name: "Regional: us-east4"
     uses: osinfra-io/github-terraform-called-workflows/.github/workflows/plan-and-apply.yml@v0.2.1
     if: github.actor != 'dependabot[bot]'
-    needs: global_infra
+    needs: global
     with:
       checkout_ref: ${{ github.ref }}
       environment: us-east4-sandbox
-      github_environment: "Sandbox Infrastructure: Regional - us-east4"
+      github_environment: "Sandbox: Regional - us-east4"
       service_account: plt-lz-networking-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east4-sandbox.tfvars
       terraform_state_bucket: plt-lz-networking-2c8b-sb
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east4-sandbox
-      working_directory: regional/infra
+      working_directory: regional
       workload_identity_provider: projects/746490462722/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
