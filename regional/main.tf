@@ -38,20 +38,20 @@ module "cloud_nat" {
   region  = var.region
 
   depends_on = [
-    module.subnet
+    module.subnets
   ]
 }
 
 # Google Subnet Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-subnet
 
-module "subnet" {
-  source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.0"
+module "subnets" {
+  source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.1"
 
   for_each = var.subnets
 
   ip_cidr_range = each.value.ip_cidr_range
-  name          = "${each.key}-${var.region}"
+  name          = each.key
   network       = local.global.vpc_name
 
   # When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and
@@ -68,11 +68,11 @@ module "subnet" {
 
   secondary_ip_ranges = [
     {
-      range_name    = "services-k8s-services-${var.region}"
+      range_name    = "k8s-secondary-services"
       ip_cidr_range = each.value.services_ip_cidr_range
     },
     {
-      range_name    = "services-k8s-pods-${var.region}"
+      range_name    = "k8s-secondary-pods"
       ip_cidr_range = each.value.pod_ip_cidr_range
     }
   ]
@@ -82,29 +82,21 @@ module "subnet" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
 
 resource "google_compute_subnetwork_iam_member" "cloud_services" {
-  for_each = var.kubernetes_service_projects
+  for_each = var.subnets
 
-  member     = "serviceAccount:${each.value.number}@cloudservices.gserviceaccount.com"
+  member     = "serviceAccount:${each.value.service_project_number}@cloudservices.gserviceaccount.com"
   project    = local.global.project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = "services-${var.region}"
-
-  depends_on = [
-    module.subnet
-  ]
+  subnetwork = module.subnets[each.key].name
 }
 
 resource "google_compute_subnetwork_iam_member" "container_engine" {
-  for_each = var.kubernetes_service_projects
+  for_each = var.subnets
 
-  member     = "serviceAccount:service-${each.value.number}@container-engine-robot.iam.gserviceaccount.com"
+  member     = "serviceAccount:service-${each.value.service_project_number}@container-engine-robot.iam.gserviceaccount.com"
   project    = local.global.project_id
   region     = var.region
   role       = "roles/compute.networkUser"
-  subnetwork = "services-${var.region}"
-
-  depends_on = [
-    module.subnet
-  ]
+  subnetwork = module.subnets[each.key].name
 }

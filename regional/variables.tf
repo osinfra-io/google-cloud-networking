@@ -4,14 +4,6 @@ variable "environment" {
   default     = "sandbox"
 }
 
-variable "kubernetes_service_projects" {
-  description = "The map of Kubernetes service project IDs and numbers"
-  type = map(object({
-    number = optional(number)
-  }))
-  default = {}
-}
-
 variable "region" {
   description = "The region for this subnetwork"
   type        = string
@@ -26,6 +18,7 @@ variable "subnets" {
   description = "The map of subnets to create"
   type = map(object({
     ip_cidr_range          = string
+    service_project_number = string
     master_ip_cidr_range   = string
     pod_ip_cidr_range      = string
     services_ip_cidr_range = string
