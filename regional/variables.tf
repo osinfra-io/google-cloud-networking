@@ -19,7 +19,6 @@ variable "subnets" {
   type = map(object({
     ip_cidr_range          = string
     service_project_number = string
-    master_ip_cidr_range   = string
     pod_ip_cidr_range      = string
     services_ip_cidr_range = string
   }))
