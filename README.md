@@ -31,6 +31,7 @@ See the documentation for setting up a development environment [here](https://do
 
 ### 🛠️ Tools
 
+- [checkov](https://github.com/bridgecrewio/checkov)
 - [infracost](https://github.com/infracost/infracost)
 - [pre-commit](https://github.com/pre-commit/pre-commit)
 - [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
@@ -46,5 +47,9 @@ Links to documentation and other resources required to develop and iterate in th
 
 ### 📓 Terraform Documentation
 
-- [global](global/infra/README.md)
-- [regional](regional/infra/README.md)
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## 📓 Terraform Regional Documentation
+
+- [regional](regional/README.md)
