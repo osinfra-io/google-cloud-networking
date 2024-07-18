@@ -17,7 +17,7 @@ No requirements.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_cloud_nat"></a> [cloud\_nat](#module\_cloud\_nat) | github.com/osinfra-io/terraform-google-cloud-nat//regional | v0.1.0 |
-| <a name="module_subnets"></a> [subnets](#module\_subnets) | github.com/osinfra-io/terraform-google-subnet//regional | v0.1.1 |
+| <a name="module_subnets"></a> [subnets](#module\_subnets) | github.com/osinfra-io/terraform-google-subnet//regional | v0.1.2 |
 
 ## Resources
 
