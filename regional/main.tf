@@ -46,7 +46,7 @@ module "cloud_nat" {
 # https://github.com/osinfra-io/terraform-google-subnet
 
 module "subnets" {
-  source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.1"
+  source = "github.com/osinfra-io/terraform-google-subnet//regional?ref=v0.1.2"
 
   for_each = var.subnets
 
