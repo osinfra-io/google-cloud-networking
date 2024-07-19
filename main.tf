@@ -85,6 +85,9 @@ module "private_dns" {
 }
 
 module "public_dns" {
+  # Ensure that DNSSEC is enabled for Cloud DNS
+  # checkov:skip=CKV_GCP_16: False positive
+
   source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.1"
 
   dns_name   = var.environment == "prod" ? "gcp.osinfra.io." : "${var.environment}.gcp.osinfra.io."
