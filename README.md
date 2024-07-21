@@ -58,11 +58,11 @@ Links to documentation and other resources required to develop and iterate in th
 
 | Name | Source | Version |
 |------|--------|---------|
-| datadog | github.com/osinfra-io/terraform-datadog-google-integration//global | v0.1.6 |
-| private\_dns | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.1 |
+| datadog | github.com/osinfra-io/terraform-datadog-google-integration | v0.2.0 |
+| private\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.1.0 |
 | project | github.com/osinfra-io/terraform-google-project//global | v0.2.2 |
-| public\_dns | github.com/osinfra-io/terraform-google-cloud-dns//global | v0.1.1 |
-| vpc | github.com/osinfra-io/terraform-google-vpc//global | v0.1.1 |
+| public\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.1.0 |
+| vpc | github.com/osinfra-io/terraform-google-network | v0.1.0 |
 
 #### Resources
 

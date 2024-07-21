@@ -30,7 +30,7 @@ provider "datadog" {
 # https://github.com/osinfra-io/terraform-datadog-google-integration
 
 module "datadog" {
-  source = "github.com/osinfra-io/terraform-datadog-google-integration//global?ref=v0.1.6"
+  source = "github.com/osinfra-io/terraform-datadog-google-integration?ref=v0.2.0"
   count  = var.enable_datadog ? 1 : 0
 
   api_key         = var.datadog_api_key
@@ -70,7 +70,7 @@ module "project" {
 # https://github.com/osinfra-io/terraform-google-cloud-dns
 
 module "private_dns" {
-  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.1"
+  source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.1.0"
 
   dns_name = var.environment == "prod" ? "gcp-priv.osinfra.io." : "${var.environment}.gcp-priv.osinfra.io."
   labels   = local.labels
@@ -88,7 +88,7 @@ module "public_dns" {
   # Ensure that DNSSEC is enabled for Cloud DNS
   # checkov:skip=CKV_GCP_16: False positive
 
-  source = "github.com/osinfra-io/terraform-google-cloud-dns//global?ref=v0.1.1"
+  source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.1.0"
 
   dns_name   = var.environment == "prod" ? "gcp.osinfra.io." : "${var.environment}.gcp.osinfra.io."
   labels     = local.labels
@@ -101,7 +101,7 @@ module "public_dns" {
 # https://github.com/osinfra-io/terraform-google-vpc
 
 module "vpc" {
-  source = "github.com/osinfra-io/terraform-google-vpc//global?ref=v0.1.1"
+  source = "github.com/osinfra-io/terraform-google-network?ref=v0.1.0"
 
   name       = "standard-shared"
   project    = module.project.project_id
