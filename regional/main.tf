@@ -16,7 +16,7 @@ terraform {
 # Terraform Remote State Datasource
 # https://www.terraform.io/docs/language/state/remote-state-data.html
 
-data "terraform_remote_state" "global" {
+data "terraform_remote_state" "main" {
   backend = "gcs"
 
   config = {
@@ -24,7 +24,7 @@ data "terraform_remote_state" "global" {
     prefix = "google-cloud-networking"
   }
 
-  workspace = "global-${var.environment}"
+  workspace = "main-${var.environment}"
 }
 
 # Google Cloud NAT Module (osinfra.io)
@@ -33,8 +33,8 @@ data "terraform_remote_state" "global" {
 module "cloud_nat" {
   source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=v0.1.0"
 
-  network = local.global.vpc_name
-  project = local.global.project_id
+  network = local.main.vpc_name
+  project = local.main.project_id
   region  = var.region
 
   depends_on = [
@@ -52,13 +52,13 @@ module "subnets" {
 
   ip_cidr_range = each.value.ip_cidr_range
   name          = each.key
-  network       = local.global.vpc_name
+  network       = local.main.vpc_name
 
   # When enabled, VMs in this subnetwork without external IP addresses can access Google APIs and
   # services by using Private Google Access. This is required for private Kubernetes clusters.
 
   private_ip_google_access = true
-  project                  = local.global.project_id
+  project                  = local.main.project_id
   region                   = var.region
 
   # Secondary ranges are used to allocate IP addresses to resources in a subnetwork. In this example we create Pod IP address ranges
@@ -85,7 +85,7 @@ resource "google_compute_subnetwork_iam_member" "cloud_services" {
   for_each = var.subnets
 
   member     = "serviceAccount:${each.value.service_project_number}@cloudservices.gserviceaccount.com"
-  project    = local.global.project_id
+  project    = local.main.project_id
   region     = var.region
   role       = "roles/compute.networkUser"
   subnetwork = module.subnets[each.key].name
@@ -95,7 +95,7 @@ resource "google_compute_subnetwork_iam_member" "container_engine" {
   for_each = var.subnets
 
   member     = "serviceAccount:service-${each.value.service_project_number}@container-engine-robot.iam.gserviceaccount.com"
-  project    = local.global.project_id
+  project    = local.main.project_id
   region     = var.region
   role       = "roles/compute.networkUser"
   subnetwork = module.subnets[each.key].name
