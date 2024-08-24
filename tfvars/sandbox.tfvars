@@ -17,7 +17,6 @@ private_record_sets = [
 ]
 
 vpc_service_projects = {
-  "plt-backstage-tf3f-sb" = {}
   "plt-k8s-tf39-sb" = {
     number = 362793201562
   }
