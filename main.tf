@@ -113,9 +113,9 @@ module "vpc" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address
 
 resource "google_compute_global_address" "service_network_peering_range" {
-  address      = "172.16.0.0"
-  address_type = "INTERNAL"
-  # labels        = local.labels TODO:#190
+  address       = "172.16.0.0"
+  address_type  = "INTERNAL"
+  labels        = local.labels
   name          = "service-network-peering-range"
   network       = module.vpc.self_link
   prefix_length = 16
