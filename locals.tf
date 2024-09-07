@@ -3,6 +3,7 @@
 
 locals {
   domain_environment = var.environment == "prod" ? "" : var.environment
+  env                = var.environment == "sandbox" ? "sb" : var.environment == "non-production" ? "nonprod" : var.environment == "production" ? "prod" : "none"
 
   labels = {
     cost-center = "x001"
