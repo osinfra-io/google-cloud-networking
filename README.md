@@ -87,7 +87,7 @@ Links to documentation and other resources required to develop and iterate in th
 | datadog\_app\_key | Datadog APP key | `string` | n/a | yes |
 | dns\_records\_admins | The set of service accounts that can administer DNS records in this project | `set(string)` | `[]` | no |
 | enable\_datadog | Enable Datadog integration | `bool` | `false` | no |
-| environment | The environment suffix for example: `sb` (Sandbox), `nonprod` (Non-Production), `prod` (Production) | `string` | `"sb"` | no |
+| environment | The environment for example: `sandbox`, `non-production`, `production` | `string` | `"sandbox"` | no |
 | folder\_id | The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified | `string` | n/a | yes |
 | private\_record\_sets | Private DNS record sets | ```list(object({ name = string rrdatas = list(string) type = string ttl = number }))``` | `[]` | no |
 | public\_record\_sets | Private DNS record sets | ```list(object({ name = string rrdatas = list(string) type = string ttl = number }))``` | `[]` | no |
