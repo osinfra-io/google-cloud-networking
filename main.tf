@@ -49,7 +49,7 @@ module "project" {
   billing_account                 = var.billing_account
   cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
   description                     = "networking"
-  environment                     = var.environment
+  environment                     = local.env
   folder_id                       = var.folder_id
   labels                          = local.labels
   prefix                          = "plt-lz"
@@ -73,9 +73,9 @@ module "project" {
 module "private_dns" {
   source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.1.0"
 
-  dns_name = var.environment == "prod" ? "gcp-priv.osinfra.io." : "${var.environment}.gcp-priv.osinfra.io."
+  dns_name = local.env == "prod" ? "gcp-priv.osinfra.io." : "${local.env}.gcp-priv.osinfra.io."
   labels   = local.labels
-  name     = var.environment == "prod" ? "gcp-priv-osinfra-io" : "${var.environment}-gcp-priv-osinfra-io"
+  name     = local.env == "prod" ? "gcp-priv-osinfra-io" : "${local.env}-gcp-priv-osinfra-io"
 
   private_visibility_config_networks = [
     module.vpc.self_link
@@ -91,9 +91,9 @@ module "public_dns" {
 
   source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.1.0"
 
-  dns_name   = var.environment == "prod" ? "gcp.osinfra.io." : "${var.environment}.gcp.osinfra.io."
+  dns_name   = local.env == "prod" ? "gcp.osinfra.io." : "${local.env}.gcp.osinfra.io."
   labels     = local.labels
-  name       = var.environment == "prod" ? "gcp-osinfra-io" : "${var.environment}-gcp-osinfra-io"
+  name       = local.env == "prod" ? "gcp-osinfra-io" : "${local.env}-gcp-osinfra-io"
   project    = module.project.project_id
   visibility = "public"
 }
