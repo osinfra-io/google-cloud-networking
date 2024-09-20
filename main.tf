@@ -37,7 +37,7 @@ module "datadog" {
   is_cspm_enabled                    = true
   is_security_command_center_enabled = true
   labels                             = local.labels
-  project                            = module.project.project_id
+  project                            = module.project.id
 }
 
 # Google Project Module (osinfra.io)
@@ -81,7 +81,7 @@ module "private_dns" {
     module.vpc.self_link
   ]
 
-  project    = module.project.project_id
+  project    = module.project.id
   visibility = "private"
 }
 
@@ -94,7 +94,7 @@ module "public_dns" {
   dns_name   = local.env == "prod" ? "gcp.osinfra.io." : "${local.env}.gcp.osinfra.io."
   labels     = local.labels
   name       = local.env == "prod" ? "gcp-osinfra-io" : "${local.env}-gcp-osinfra-io"
-  project    = module.project.project_id
+  project    = module.project.id
   visibility = "public"
 }
 
@@ -105,7 +105,7 @@ module "vpc" {
   source = "github.com/osinfra-io/terraform-google-network?ref=v0.2.0"
 
   name       = "standard-shared"
-  project    = module.project.project_id
+  project    = module.project.id
   shared_vpc = true
 }
 
@@ -119,7 +119,7 @@ resource "google_compute_global_address" "service_network_peering_range" {
   name          = "service-network-peering-range"
   network       = module.vpc.self_link
   prefix_length = 16
-  project       = module.project.project_id
+  project       = module.project.id
   purpose       = "VPC_PEERING"
 }
 
@@ -129,7 +129,7 @@ resource "google_compute_global_address" "service_network_peering_range" {
 resource "google_compute_shared_vpc_service_project" "this" {
   for_each = var.vpc_service_projects
 
-  host_project    = module.project.project_id
+  host_project    = module.project.id
   service_project = each.key
 }
 # DNS Record Set Resource
@@ -140,7 +140,7 @@ resource "google_dns_record_set" "private" {
 
   managed_zone = module.private_dns.name
   name         = "${each.value.name}.${module.private_dns.dns_name}"
-  project      = module.project.project_id
+  project      = module.project.id
   rrdatas      = each.value.rrdatas
   ttl          = each.value.ttl
   type         = each.value.type
@@ -151,7 +151,7 @@ resource "google_dns_record_set" "public" {
 
   managed_zone = module.public_dns.name
   name         = "${each.value.name}.${module.public_dns.dns_name}"
-  project      = module.project.project_id
+  project      = module.project.id
   rrdatas      = each.value.rrdatas
   ttl          = each.value.ttl
   type         = each.value.type
@@ -164,7 +164,7 @@ resource "google_project_iam_member" "container_engine_firewall_management" {
   for_each = { for k, v in var.vpc_service_projects : k => v if lookup(v, "number", null) != null }
 
   member  = "serviceAccount:service-${lookup(each.value, "number")}@container-engine-robot.iam.gserviceaccount.com"
-  project = module.project.project_id
+  project = module.project.id
   role    = "organizations/163313809793/roles/kubernetes.hostFirewallManagement"
 }
 
@@ -172,7 +172,7 @@ resource "google_project_iam_member" "container_engine_service_agent_user" {
   for_each = { for k, v in var.vpc_service_projects : k => v if lookup(v, "number", null) != null }
 
   member  = "serviceAccount:service-${lookup(each.value, "number")}@container-engine-robot.iam.gserviceaccount.com"
-  project = module.project.project_id
+  project = module.project.id
   role    = "roles/container.hostServiceAgentUser"
 }
 
@@ -180,7 +180,7 @@ resource "google_project_iam_member" "dns_records_admins" {
   for_each = var.dns_records_admins
 
   member  = "serviceAccount:${each.key}"
-  project = module.project.project_id
+  project = module.project.id
   role    = "organizations/163313809793/roles/dns.recordsAdmin"
 }
 

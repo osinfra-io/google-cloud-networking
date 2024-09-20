@@ -8,5 +8,5 @@ output "vpc_name" {
 
 output "project_id" {
   description = "The project ID"
-  value       = module.project.project_id
+  value       = module.project.id
 }
