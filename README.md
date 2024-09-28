@@ -52,7 +52,7 @@ Links to documentation and other resources required to develop and iterate in th
 
 | Name | Version |
 |------|---------|
-| google | 6.3.0 |
+| google | 6.4.0 |
 
 #### Modules
 
