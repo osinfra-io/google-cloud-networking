@@ -63,7 +63,7 @@ Links to documentation and other resources required to develop and iterate in th
 | private\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.2.0 |
 | project | github.com/osinfra-io/terraform-google-project | v0.4.5 |
 | public\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.2.0 |
-| vpc | github.com/osinfra-io/terraform-google-network | helpers |
+| vpc | github.com/osinfra-io/terraform-google-network | v0.2.1 |
 
 #### Resources
 

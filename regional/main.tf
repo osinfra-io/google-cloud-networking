@@ -31,7 +31,7 @@ data "terraform_remote_state" "main" {
 # https://github.com/osinfra-io/terraform-google-cloud-nat
 
 module "cloud_nat" {
-  source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=helpers"
+  source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=v0.2.1"
 
   network = local.main.vpc_name
   project = local.main.project_id
@@ -45,7 +45,7 @@ module "cloud_nat" {
 # https://github.com/osinfra-io/terraform-google-subnet
 
 module "subnets" {
-  source = "github.com/osinfra-io/terraform-google-network//regional?ref=helpers"
+  source = "github.com/osinfra-io/terraform-google-network//regional?ref=v0.2.1"
 
   for_each = var.subnets
 
