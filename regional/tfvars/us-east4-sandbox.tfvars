@@ -1,5 +1,4 @@
-region        = "us-east4"
-remote_bucket = "plt-lz-networking-2c8b-sb"
+remote_bucket = "plt-lz-networking-4312-sb"
 
 subnets = {
   "plt-us-east4-a" = {

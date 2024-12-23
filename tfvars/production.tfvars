@@ -1,11 +1,10 @@
-environment                     = "production"
-cis_2_2_logging_sink_project_id = "plt-lz-audit01-tf91-prod"
-
 dns_records_admins = [
-  "plt-k8s-github@ptl-lz-terraform-tf62-prod.iam.gserviceaccount.com"
+  "plt-k8s-github@plt-lz-terraform-tf56-prod.iam.gserviceaccount.com"
 ]
 
-folder_id = "1033174574192"
+project_cis_2_2_logging_sink_project_id = "plt-lz-audit01-tf91-prod"
+
+project_folder_id = "1033174574192"
 
 public_record_sets = [
   {

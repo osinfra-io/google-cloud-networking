@@ -1,11 +1,8 @@
-cis_2_2_logging_sink_project_id = "plt-lz-audit01-tf92-sb"
+datadog_enable = false
 
 dns_records_admins = [
-  "plt-k8s-github@ptl-lz-terraform-tf91-sb.iam.gserviceaccount.com"
+  "plt-k8s-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com"
 ]
-
-enable_datadog = false
-folder_id      = "13103602325"
 
 private_record_sets = [
   {
@@ -15,6 +12,9 @@ private_record_sets = [
     type    = "A"
   }
 ]
+
+project_cis_2_2_logging_sink_project_id = "plt-lz-audit01-tf92-sb"
+project_folder_id                       = "13103602325"
 
 vpc_service_projects = {
   "plt-k8s-tf39-sb" = {

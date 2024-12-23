@@ -31,12 +31,12 @@ provider "datadog" {
 
 module "datadog" {
   source = "github.com/osinfra-io/terraform-datadog-google-integration?ref=v0.3.0"
-  count  = var.enable_datadog ? 1 : 0
+  count  = var.datadog_enable ? 1 : 0
 
   api_key                            = var.datadog_api_key
   is_cspm_enabled                    = true
   is_security_command_center_enabled = true
-  labels                             = local.labels
+  labels                             = module.helpers.labels
   project                            = module.project.id
 }
 
@@ -46,12 +46,11 @@ module "datadog" {
 module "project" {
   source = "github.com/osinfra-io/terraform-google-project?ref=v0.4.5"
 
-  billing_account                 = var.billing_account
-  cis_2_2_logging_sink_project_id = var.cis_2_2_logging_sink_project_id
+  billing_account                 = var.project_billing_account
+  cis_2_2_logging_sink_project_id = var.project_cis_2_2_logging_sink_project_id
   description                     = "networking"
-  environment                     = local.env
-  folder_id                       = var.folder_id
-  labels                          = local.labels
+  folder_id                       = var.project_folder_id
+  labels                          = module.helpers.labels
   prefix                          = "plt-lz"
 
   services = [
@@ -73,9 +72,9 @@ module "project" {
 module "private_dns" {
   source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.2.0"
 
-  dns_name = local.env == "prod" ? "gcp-priv.osinfra.io." : "${local.env}.gcp-priv.osinfra.io."
-  labels   = local.labels
-  name     = local.env == "prod" ? "gcp-priv-osinfra-io" : "${local.env}-gcp-priv-osinfra-io"
+  dns_name = module.helpers.env == "prod" ? "gcp-priv.osinfra.io." : "${module.helpers.env}.gcp-priv.osinfra.io."
+  labels   = module.helpers.labels
+  name     = module.helpers.env == "prod" ? "gcp-priv-osinfra-io" : "${module.helpers.env}-gcp-priv-osinfra-io"
 
   private_visibility_config_networks = [
     module.vpc.self_link
@@ -91,9 +90,9 @@ module "public_dns" {
 
   source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.2.0"
 
-  dns_name   = local.env == "prod" ? "gcp.osinfra.io." : "${local.env}.gcp.osinfra.io."
-  labels     = local.labels
-  name       = local.env == "prod" ? "gcp-osinfra-io" : "${local.env}-gcp-osinfra-io"
+  dns_name   = module.helpers.env == "prod" ? "gcp.osinfra.io." : "${module.helpers.env}.gcp.osinfra.io."
+  labels     = module.helpers.labels
+  name       = module.helpers.env == "prod" ? "gcp-osinfra-io" : "${module.helpers.env}-gcp-osinfra-io"
   project    = module.project.id
   visibility = "public"
 }
@@ -102,7 +101,7 @@ module "public_dns" {
 # https://github.com/osinfra-io/terraform-google-vpc
 
 module "vpc" {
-  source = "github.com/osinfra-io/terraform-google-network?ref=v0.2.0"
+  source = "github.com/osinfra-io/terraform-google-network?ref=helpers"
 
   name       = "standard-shared"
   project    = module.project.id
@@ -115,7 +114,7 @@ module "vpc" {
 resource "google_compute_global_address" "service_network_peering_range" {
   address       = "172.16.0.0"
   address_type  = "INTERNAL"
-  labels        = local.labels
+  labels        = module.helpers.labels
   name          = "service-network-peering-range"
   network       = module.vpc.self_link
   prefix_length = 16

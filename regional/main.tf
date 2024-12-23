@@ -24,18 +24,17 @@ data "terraform_remote_state" "main" {
     prefix = "google-cloud-networking"
   }
 
-  workspace = "main-${var.environment}"
+  workspace = "main-${module.helpers.environment}"
 }
 
 # Google Cloud NAT Module (osinfra.io)
 # https://github.com/osinfra-io/terraform-google-cloud-nat
 
 module "cloud_nat" {
-  source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=v0.2.0"
+  source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=helpers"
 
   network = local.main.vpc_name
   project = local.main.project_id
-  region  = var.region
 
   depends_on = [
     module.subnets
@@ -46,7 +45,7 @@ module "cloud_nat" {
 # https://github.com/osinfra-io/terraform-google-subnet
 
 module "subnets" {
-  source = "github.com/osinfra-io/terraform-google-network//regional?ref=v0.2.0"
+  source = "github.com/osinfra-io/terraform-google-network//regional?ref=helpers"
 
   for_each = var.subnets
 
@@ -59,7 +58,6 @@ module "subnets" {
 
   private_ip_google_access = true
   project                  = local.main.project_id
-  region                   = var.region
 
   # Secondary ranges are used to allocate IP addresses to resources in a subnetwork. In this example we create Pod IP address ranges
   # and Service (ClusterIP) address ranges for a VPC-native cluster.
@@ -86,7 +84,7 @@ resource "google_compute_subnetwork_iam_member" "cloud_services" {
 
   member     = "serviceAccount:${each.value.service_project_number}@cloudservices.gserviceaccount.com"
   project    = local.main.project_id
-  region     = var.region
+  region     = module.helpers.region
   role       = "roles/compute.networkUser"
   subnetwork = module.subnets[each.key].name
 }
@@ -96,7 +94,7 @@ resource "google_compute_subnetwork_iam_member" "container_engine" {
 
   member     = "serviceAccount:service-${each.value.service_project_number}@container-engine-robot.iam.gserviceaccount.com"
   project    = local.main.project_id
-  region     = var.region
+  region     = module.helpers.region
   role       = "roles/compute.networkUser"
   subnetwork = module.subnets[each.key].name
 }
