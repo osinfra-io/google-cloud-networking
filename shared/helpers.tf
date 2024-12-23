@@ -6,6 +6,6 @@ module "helpers" {
 
   cost_center         = "x001"
   data_classification = "public"
-  repository          = "google-cloud-networkings"
+  repository          = "google-cloud-networking"
   team                = "platform-google-cloud-landing-zone"
 }
