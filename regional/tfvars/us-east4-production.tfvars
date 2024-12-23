@@ -1,6 +1,4 @@
-environment   = "production"
-region        = "us-east4"
-remote_bucket = "plt-lz-networking-e194-prod"
+remote_bucket = "plt-lz-networking-53a5-prod"
 
 subnets = {
   "plt-us-east4-a" = {

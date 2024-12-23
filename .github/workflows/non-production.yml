@@ -23,9 +23,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: non-production
       github_environment: "Non-Production: Main"
-      service_account: plt-lz-networking-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@plt-lz-terraform-tfe2-nonprod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/non-production.tfvars
-      terraform_state_bucket: plt-lz-networking-3bfe-nonprod
+      terraform_state_bucket: plt-lz-networking-ae26-nonprod
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: main-non-production
       workload_identity_provider: projects/992372365053/locations/global/workloadIdentityPools/github-actions/providers/github-actions-oidc
@@ -45,9 +45,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: us-east1-non-production
       github_environment: "Non-Production: Regional - us-east1"
-      service_account: plt-lz-networking-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@plt-lz-terraform-tfe2-nonprod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east1-non-production.tfvars
-      terraform_state_bucket: plt-lz-networking-3bfe-nonprod
+      terraform_state_bucket: plt-lz-networking-ae26-nonprod
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east1-non-production
       working_directory: regional
@@ -65,9 +65,9 @@ jobs:
       checkout_ref: ${{ github.ref }}
       environment: us-east4-non-production
       github_environment: "Non-Production: Regional - us-east4"
-      service_account: plt-lz-networking-github@ptl-lz-terraform-tf05-nonprod.iam.gserviceaccount.com
+      service_account: plt-lz-networking-github@plt-lz-terraform-tfe2-nonprod.iam.gserviceaccount.com
       terraform_plan_args: -var-file=tfvars/us-east4-non-production.tfvars
-      terraform_state_bucket: plt-lz-networking-3bfe-nonprod
+      terraform_state_bucket: plt-lz-networking-ae26-nonprod
       terraform_version: ${{ vars.TERRAFORM_VERSION }}
       terraform_workspace: us-east4-non-production
       working_directory: regional

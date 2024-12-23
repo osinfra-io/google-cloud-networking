@@ -52,17 +52,18 @@ Links to documentation and other resources required to develop and iterate in th
 
 | Name | Version |
 |------|---------|
-| google | 6.4.0 |
+| google | 6.14.1 |
 
 #### Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | datadog | github.com/osinfra-io/terraform-datadog-google-integration | v0.3.0 |
+| helpers | github.com/osinfra-io/terraform-core-helpers//root | v0.1.2 |
 | private\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.2.0 |
-| project | github.com/osinfra-io/terraform-google-project | v0.4.0 |
+| project | github.com/osinfra-io/terraform-google-project | v0.4.5 |
 | public\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.2.0 |
-| vpc | github.com/osinfra-io/terraform-google-network | v0.2.0 |
+| vpc | github.com/osinfra-io/terraform-google-network | v0.2.1 |
 
 #### Resources
 
@@ -81,15 +82,14 @@ Links to documentation and other resources required to develop and iterate in th
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| billing\_account | The alphanumeric ID of the billing account this project belongs to | `string` | `"01C550-A2C86B-B8F16B"` | no |
-| cis\_2\_2\_logging\_sink\_project\_id | The CIS 2.2 logging sink benchmark project ID | `string` | n/a | yes |
 | datadog\_api\_key | Datadog API key | `string` | n/a | yes |
 | datadog\_app\_key | Datadog APP key | `string` | n/a | yes |
+| datadog\_enable | Enable Datadog integration | `bool` | `false` | no |
 | dns\_records\_admins | The set of service accounts that can administer DNS records in this project | `set(string)` | `[]` | no |
-| enable\_datadog | Enable Datadog integration | `bool` | `false` | no |
-| environment | The environment for example: `sandbox`, `non-production`, `production` | `string` | `"sandbox"` | no |
-| folder\_id | The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified | `string` | n/a | yes |
 | private\_record\_sets | Private DNS record sets | ```list(object({ name = string rrdatas = list(string) type = string ttl = number }))``` | `[]` | no |
+| project\_billing\_account | The alphanumeric ID of the billing account this project belongs to | `string` | `"01C550-A2C86B-B8F16B"` | no |
+| project\_cis\_2\_2\_logging\_sink\_project\_id | The CIS 2.2 logging sink benchmark project ID | `string` | n/a | yes |
+| project\_folder\_id | The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified | `string` | n/a | yes |
 | public\_record\_sets | Private DNS record sets | ```list(object({ name = string rrdatas = list(string) type = string ttl = number }))``` | `[]` | no |
 | vpc\_service\_projects | The map of Kubernetes service project IDs and numbers (The number should only be added if the project is a Kubernetes service project) | ```map(object({ number = optional(number) }))``` | `{}` | no |
 
