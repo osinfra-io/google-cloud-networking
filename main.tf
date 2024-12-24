@@ -70,7 +70,7 @@ module "project" {
 # https://github.com/osinfra-io/terraform-google-cloud-dns
 
 module "private_dns" {
-  source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.2.0"
+  source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.2.1"
 
   dns_name = module.helpers.env == "prod" ? "gcp-priv.osinfra.io." : "${module.helpers.env}.gcp-priv.osinfra.io."
   labels   = module.helpers.labels
