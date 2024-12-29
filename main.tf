@@ -131,6 +131,7 @@ resource "google_compute_shared_vpc_service_project" "this" {
   host_project    = module.project.id
   service_project = each.key
 }
+
 # DNS Record Set Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set
 

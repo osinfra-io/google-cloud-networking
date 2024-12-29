@@ -17,6 +17,7 @@ project_cis_2_2_logging_sink_project_id = "plt-lz-audit01-tf92-sb"
 project_folder_id                       = "13103602325"
 
 vpc_service_projects = {
+  "plt-backstage-tf90-sb" = {}
   "plt-k8s-tf39-sb" = {
     number = 362793201562
   }
