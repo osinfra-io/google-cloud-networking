@@ -1,6 +1,7 @@
 datadog_enable = false
 
 dns_records_admins = [
+  "plt-backstage-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com",
   "plt-k8s-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com"
 ]
 
