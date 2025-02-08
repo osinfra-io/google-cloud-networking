@@ -25,6 +25,12 @@ variable "dns_records_admins" {
   default     = []
 }
 
+variable "iam_admins" {
+  description = "The set of service accounts that can administer IAM in this project"
+  type        = set(string)
+  default     = []
+}
+
 variable "private_record_sets" {
   description = "Private DNS record sets"
   type = list(object({
