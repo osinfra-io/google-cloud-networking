@@ -5,6 +5,10 @@ dns_records_admins = [
   "plt-k8s-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com"
 ]
 
+iam_admins = [
+  "plt-k8s-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com"
+]
+
 private_record_sets = [
   {
     name    = "test"

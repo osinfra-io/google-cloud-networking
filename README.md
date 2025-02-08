@@ -52,7 +52,7 @@ Links to documentation and other resources required to develop and iterate in th
 
 | Name | Version |
 |------|---------|
-| google | 6.14.1 |
+| google | 6.19.0 |
 
 #### Modules
 
@@ -76,6 +76,7 @@ Links to documentation and other resources required to develop and iterate in th
 | [google_project_iam_member.container_engine_firewall_management](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 | [google_project_iam_member.container_engine_service_agent_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 | [google_project_iam_member.dns_records_admins](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.iam_admins](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 | [google_service_networking_connection.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection) | resource |
 
 #### Inputs
@@ -86,6 +87,7 @@ Links to documentation and other resources required to develop and iterate in th
 | datadog\_app\_key | Datadog APP key | `string` | n/a | yes |
 | datadog\_enable | Enable Datadog integration | `bool` | `false` | no |
 | dns\_records\_admins | The set of service accounts that can administer DNS records in this project | `set(string)` | `[]` | no |
+| iam\_admins | The set of service accounts that can administer IAM in this project | `set(string)` | `[]` | no |
 | private\_record\_sets | Private DNS record sets | ```list(object({ name = string rrdatas = list(string) type = string ttl = number }))``` | `[]` | no |
 | project\_billing\_account | The alphanumeric ID of the billing account this project belongs to | `string` | `"01C550-A2C86B-B8F16B"` | no |
 | project\_cis\_2\_2\_logging\_sink\_project\_id | The CIS 2.2 logging sink benchmark project ID | `string` | n/a | yes |

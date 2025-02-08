@@ -184,6 +184,14 @@ resource "google_project_iam_member" "dns_records_admins" {
   role    = "organizations/163313809793/roles/dns.recordsAdmin"
 }
 
+resource "google_project_iam_member" "iam_admins" {
+  for_each = var.iam_admins
+
+  member  = "serviceAccount:${each.key}"
+  project = module.project.id
+  role    = "roles/resourcemanager.projectIamAdmin"
+}
+
 # Service Networking Connection Resource
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
 
