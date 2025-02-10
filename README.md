@@ -58,7 +58,7 @@ Links to documentation and other resources required to develop and iterate in th
 
 | Name | Source | Version |
 |------|--------|---------|
-| datadog | github.com/osinfra-io/terraform-datadog-google-integration | v0.3.0 |
+| datadog | github.com/osinfra-io/terraform-datadog-google-integration | v0.3.3 |
 | helpers | github.com/osinfra-io/terraform-core-helpers//root | v0.1.2 |
 | private\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.2.1 |
 | project | github.com/osinfra-io/terraform-google-project | v0.4.5 |
