@@ -31,7 +31,7 @@ data "terraform_remote_state" "main" {
 # https://github.com/osinfra-io/terraform-google-cloud-nat
 
 module "cloud_nat" {
-  source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=v0.2.1"
+  source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=v0.2.2"
 
   network = local.main.vpc_name
   project = local.main.project_id
