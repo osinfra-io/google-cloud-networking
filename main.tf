@@ -100,7 +100,7 @@ module "public_dns" {
 # https://github.com/osinfra-io/terraform-google-vpc
 
 module "vpc" {
-  source = "github.com/osinfra-io/terraform-google-network?ref=v0.2.2"
+  source = "github.com/osinfra-io/terraform-google-network?ref=v0.2.3"
 
   name       = "standard-shared"
   project    = module.project.id
