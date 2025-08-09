@@ -53,7 +53,6 @@ jobs:
     secrets:
       gpg_passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-
   us_east4:
     name: "Regional: us-east4"
     uses: osinfra-io/github-opentofu-gcp-called-workflows/.github/workflows/plan-and-apply.yml@367d86eecaab18bb7fae7f5fa17fe7001df13f16
