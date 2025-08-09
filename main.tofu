@@ -1,19 +1,19 @@
 terraform {
 
   # Requiring Providers
-  # https://www.terraform.io/language/providers/requirements#requiring-providers
+  # https://opentofu.org/docs/language/providers/requirements#requiring-providers
 
   required_providers {
 
     # Datadog Provider
-    # https://registry.terraform.io/providers/DataDog/datadog/latest/docs
+    # https://search.opentofu.org/provider/DataDog/datadog/latest/docs
 
     datadog = {
       source = "datadog/datadog"
     }
 
     # Google Cloud Platform Provider
-    # https://registry.terraform.io/providers/hashicorp/google/latest/docs
+    # https://search.opentofu.org/provider/hashicorp/google/latest/docs
 
     google = {
       source = "hashicorp/google"
@@ -26,11 +26,21 @@ provider "datadog" {
   app_key = var.datadog_app_key
 }
 
+# Google Cloud Provider
+# https://search.opentofu.org/provider/hashicorp/google/latest/docs
+
+# This is only needed during bootstrapping.
+
+# provider "google" {
+#   billing_project       = var.billing_project
+#   user_project_override = true
+# }
+
 # Datadog Google Cloud Platform Integration Module (osinfra.io)
-# https://github.com/osinfra-io/terraform-datadog-google-integration
+# https://github.com/osinfra-io/opentofu-datadog-google-integration
 
 module "datadog" {
-  source = "github.com/osinfra-io/terraform-datadog-google-integration?ref=v0.3.6"
+  source = "github.com/osinfra-io/opentofu-datadog-google-integration?ref=v0.3.6"
   count  = var.datadog_enable ? 1 : 0
 
   api_key = var.datadog_api_key
@@ -39,10 +49,10 @@ module "datadog" {
 }
 
 # Google Project Module (osinfra.io)
-# https://github.com/osinfra-io/terraform-google-project
+# https://github.com/osinfra-io/opentofu-google-project
 
 module "project" {
-  source = "github.com/osinfra-io/terraform-google-project?ref=v0.4.6"
+  source = "github.com/osinfra-io/opentofu-google-project?ref=v0.4.6"
 
   billing_account                 = var.project_billing_account
   cis_2_2_logging_sink_project_id = var.project_cis_2_2_logging_sink_project_id
@@ -66,10 +76,10 @@ module "project" {
 }
 
 # Google Cloud DNS Module (osinfra.io)
-# https://github.com/osinfra-io/terraform-google-cloud-dns
+# https://github.com/osinfra-io/opentofu-google-cloud-dns
 
 module "private_dns" {
-  source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.2.2"
+  source = "github.com/osinfra-io/opentofu-google-network//dns?ref=v0.2.3"
 
   dns_name = module.helpers.env == "prod" ? "gcp-priv.osinfra.io." : "${module.helpers.env}.gcp-priv.osinfra.io."
   labels   = module.helpers.labels
@@ -87,7 +97,7 @@ module "public_dns" {
   # Ensure that DNSSEC is enabled for Cloud DNS
   # checkov:skip=CKV_GCP_16: False positive
 
-  source = "github.com/osinfra-io/terraform-google-network//dns?ref=v0.2.3"
+  source = "github.com/osinfra-io/opentofu-google-network//dns?ref=v0.2.3"
 
   dns_name   = module.helpers.env == "prod" ? "gcp.osinfra.io." : "${module.helpers.env}.gcp.osinfra.io."
   labels     = module.helpers.labels
@@ -97,10 +107,10 @@ module "public_dns" {
 }
 
 # Google VPC Module (osinfra.io)
-# https://github.com/osinfra-io/terraform-google-vpc
+# https://github.com/osinfra-io/opentofu-google-vpc
 
 module "vpc" {
-  source = "github.com/osinfra-io/terraform-google-network?ref=v0.2.3"
+  source = "github.com/osinfra-io/opentofu-google-network?ref=v0.2.3"
 
   name       = "standard-shared"
   project    = module.project.id
@@ -108,7 +118,7 @@ module "vpc" {
 }
 
 # Compute Global Address Resource
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address
+# https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_global_address
 
 resource "google_compute_global_address" "service_network_peering_range" {
   address       = "172.16.0.0"
@@ -122,7 +132,7 @@ resource "google_compute_global_address" "service_network_peering_range" {
 }
 
 # Compute Shared VPC Service Project Resource
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
+# https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project
 
 resource "google_compute_shared_vpc_service_project" "this" {
   for_each = var.vpc_service_projects
@@ -132,7 +142,7 @@ resource "google_compute_shared_vpc_service_project" "this" {
 }
 
 # DNS Record Set Resource
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set
+# https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/dns_record_set
 
 resource "google_dns_record_set" "private" {
   for_each = { for record in var.private_record_sets : join("-", [record.name, lower(record.type)]) => record }
@@ -157,7 +167,7 @@ resource "google_dns_record_set" "public" {
 }
 
 # Project IAM Member Resource
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam_member
+# https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/google_project_iam_member
 
 resource "google_project_iam_member" "container_engine_firewall_management" {
   for_each = { for k, v in var.vpc_service_projects : k => v if lookup(v, "number", null) != null }
@@ -192,7 +202,7 @@ resource "google_project_iam_member" "iam_admins" {
 }
 
 # Service Networking Connection Resource
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection
+# https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/service_networking_connection
 
 resource "google_service_networking_connection" "this" {
   network                 = module.vpc.self_link

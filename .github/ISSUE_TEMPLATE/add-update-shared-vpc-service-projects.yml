@@ -12,7 +12,7 @@ body:
       label: "Developer notes:"
       value: |
         <!-- Do not edit this section. It is intended to provide the developer working on this issue with additional context and instructions. -->
-        [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/osinfra-io/github-terraform-codespace)
+        [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/osinfra-io/github-opentofu-codespace)
     validations:
       required: true
 

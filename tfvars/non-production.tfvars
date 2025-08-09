@@ -1,5 +1,5 @@
 dns_records_admins = [
-  "plt-k8s-github@plt-lz-terraform-tfe2-nonprod.iam.gserviceaccount.com"
+  "plt-k8s-github@plt-lz-backend-tfa3-nonprod.iam.gserviceaccount.com"
 ]
 
 project_cis_2_2_logging_sink_project_id = "plt-lz-audit01-tff4-nonprod"
