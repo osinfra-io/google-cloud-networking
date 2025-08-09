@@ -1,4 +1,4 @@
-# Terraform Documentation
+# OpenTofu Documentation
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -16,17 +16,17 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cloud_nat"></a> [cloud\_nat](#module\_cloud\_nat) | github.com/osinfra-io/terraform-google-network//regional/nat | v0.2.1 |
-| <a name="module_helpers"></a> [helpers](#module\_helpers) | github.com/osinfra-io/terraform-core-helpers//root | v0.1.2 |
-| <a name="module_subnets"></a> [subnets](#module\_subnets) | github.com/osinfra-io/terraform-google-network//regional | v0.2.1 |
+| <a name="module_cloud_nat"></a> [cloud\_nat](#module\_cloud\_nat) | github.com/osinfra-io/opentofu-google-network//regional/nat | v0.2.1 |
+| <a name="module_helpers"></a> [helpers](#module\_helpers) | github.com/osinfra-io/opentofu-core-helpers//root | v0.1.2 |
+| <a name="module_subnets"></a> [subnets](#module\_subnets) | github.com/osinfra-io/opentofu-google-network//regional | v0.2.1 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [google_compute_subnetwork_iam_member.cloud_services](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam_member) | resource |
-| [google_compute_subnetwork_iam_member.container_engine](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam_member) | resource |
-| [terraform_remote_state.main](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
+| [google_compute_subnetwork_iam_member.cloud_services](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_subnetwork_iam_member) | resource |
+| [google_compute_subnetwork_iam_member.container_engine](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_subnetwork_iam_member) | resource |
+| [terraform_remote_state.main](https://search.opentofu.org/provider/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
 

@@ -1,11 +1,11 @@
 # Required Providers
-# https://www.terraform.io/docs/language/providers/requirements.html#requiring-providers
+# https://opentofu.org/docs/language/providers/requirements#requiring-providers
 
 terraform {
   required_providers {
 
     # Google Cloud Provider
-    # https://www.terraform.io/docs/providers/google/index.html
+    # https://search.opentofu.org/provider/hashicorp/google/latest/docs
 
     google = {
       source = "hashicorp/google"
@@ -13,8 +13,8 @@ terraform {
   }
 }
 
-# Terraform Remote State Datasource
-# https://www.terraform.io/docs/language/state/remote-state-data.html
+# OpenTofu Remote State Datasource
+# https://opentofu.org/docs/language/state/remote-state-data/
 
 data "terraform_remote_state" "main" {
   backend = "gcs"
@@ -28,10 +28,10 @@ data "terraform_remote_state" "main" {
 }
 
 # Google Cloud NAT Module (osinfra.io)
-# https://github.com/osinfra-io/terraform-google-cloud-nat
+# https://github.com/osinfra-io/opentofu-google-cloud-nat
 
 module "cloud_nat" {
-  source = "github.com/osinfra-io/terraform-google-network//regional/nat?ref=v0.2.2"
+  source = "github.com/osinfra-io/opentofu-google-network//regional/nat?ref=v0.2.3"
 
   network = local.main.vpc_name
   project = local.main.project_id
@@ -42,10 +42,10 @@ module "cloud_nat" {
 }
 
 # Google Subnet Module (osinfra.io)
-# https://github.com/osinfra-io/terraform-google-subnet
+# https://github.com/osinfra-io/opentofu-google-subnet
 
 module "subnets" {
-  source = "github.com/osinfra-io/terraform-google-network//regional?ref=v0.2.2"
+  source = "github.com/osinfra-io/opentofu-google-network//regional?ref=v0.2.3"
 
   for_each = var.subnets
 
@@ -77,7 +77,7 @@ module "subnets" {
 }
 
 # Compute Subnetwork IAM Member Resource
-# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
+# https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_subnetwork_iam
 
 resource "google_compute_subnetwork_iam_member" "cloud_services" {
   for_each = var.subnets

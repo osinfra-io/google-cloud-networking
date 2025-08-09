@@ -1,4 +1,4 @@
-remote_bucket = "plt-lz-networking-4312-sb"
+remote_bucket = "plt-lz-networking-0bf7-sb"
 
 subnets = {
   "plt-us-east4-a" = {

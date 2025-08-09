@@ -1,12 +1,12 @@
 datadog_enable = false
 
 dns_records_admins = [
-  "plt-backstage-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com",
-  "plt-k8s-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com"
+  "plt-backstage-github@plt-lz-backend-tf69-sb.iam.gserviceaccount.com",
+  "plt-k8s-github@plt-lz-backend-tf69-sb.iam.gserviceaccount.com"
 ]
 
 iam_admins = [
-  "plt-k8s-github@plt-lz-terraform-tf00-sb.iam.gserviceaccount.com"
+  "plt-k8s-github@plt-lz-backend-tf69-sb.iam.gserviceaccount.com"
 ]
 
 private_record_sets = [

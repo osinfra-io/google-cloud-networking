@@ -25,7 +25,7 @@ Our focus is on the core fundamental practice of platform engineering, Infrastru
 
 >Open Source Infrastructure (as Code) is a development model for infrastructure that focuses on open collaboration and applying relative lessons learned from software development practices that organizations can use internally at scale. - [Open Source Infrastructure (as Code)](https://www.osinfra.io)
 
-To avoid slowing down stream-aligned teams, we want to open up the possibility for contributions. The Open Source Infrastructure (as Code) model allows team members external to the platform team to contribute with only a slight increase in cognitive load. This section is for developers who want to contribute to this repository, describing the tools used, the skills, and the knowledge required, along with Terraform documentation.
+To avoid slowing down stream-aligned teams, we want to open up the possibility for contributions. The Open Source Infrastructure (as Code) model allows team members external to the platform team to contribute with only a slight increase in cognitive load. This section is for developers who want to contribute to this repository, describing the tools used, the skills, and the knowledge required, along with OpenTofu documentation.
 
 See the documentation for setting up a development environment [here](https://docs.osinfra.io/fundamentals/development-setup).
 
@@ -45,7 +45,7 @@ Links to documentation and other resources required to develop and iterate in th
 - [shared-vpc](https://cloud.google.com/vpc/docs/shared-vpc)
 - [subnets](https://cloud.google.com/vpc/docs/subnets)
 
-### 📓 Terraform Documentation
+### 📓 OpenTofu Documentation
 
 <!-- BEGIN_TF_DOCS -->
 #### Providers
@@ -58,26 +58,26 @@ Links to documentation and other resources required to develop and iterate in th
 
 | Name | Source | Version |
 |------|--------|---------|
-| datadog | github.com/osinfra-io/terraform-datadog-google-integration | v0.3.3 |
-| helpers | github.com/osinfra-io/terraform-core-helpers//root | v0.1.2 |
-| private\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.2.1 |
-| project | github.com/osinfra-io/terraform-google-project | v0.4.5 |
-| public\_dns | github.com/osinfra-io/terraform-google-network//dns | v0.2.1 |
-| vpc | github.com/osinfra-io/terraform-google-network | v0.2.1 |
+| datadog | github.com/osinfra-io/opentofu-datadog-google-integration | v0.3.3 |
+| helpers | github.com/osinfra-io/opentofu-core-helpers//root | v0.1.2 |
+| private\_dns | github.com/osinfra-io/opentofu-google-network//dns | v0.2.1 |
+| project | github.com/osinfra-io/opentofu-google-project | v0.4.5 |
+| public\_dns | github.com/osinfra-io/opentofu-google-network//dns | v0.2.1 |
+| vpc | github.com/osinfra-io/opentofu-google-network | v0.2.1 |
 
 #### Resources
 
 | Name | Type |
 |------|------|
-| [google_compute_global_address.service_network_peering_range](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_address) | resource |
-| [google_compute_shared_vpc_service_project.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project) | resource |
-| [google_dns_record_set.private](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
-| [google_dns_record_set.public](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
-| [google_project_iam_member.container_engine_firewall_management](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_project_iam_member.container_engine_service_agent_user](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_project_iam_member.dns_records_admins](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_project_iam_member.iam_admins](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_service_networking_connection.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_networking_connection) | resource |
+| [google_compute_global_address.service_network_peering_range](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_global_address) | resource |
+| [google_compute_shared_vpc_service_project.this](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project) | resource |
+| [google_dns_record_set.private](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
+| [google_dns_record_set.public](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
+| [google_project_iam_member.container_engine_firewall_management](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.container_engine_service_agent_user](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.dns_records_admins](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_project_iam_member.iam_admins](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
+| [google_service_networking_connection.this](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/service_networking_connection) | resource |
 
 #### Inputs
 
@@ -103,6 +103,6 @@ Links to documentation and other resources required to develop and iterate in th
 | vpc\_name | The VPC name |
 <!-- END_TF_DOCS -->
 
-### 📓 Terraform Regional Documentation
+### 📓 OpenTofu Regional Documentation
 
 - [regional](regional/README.md)
