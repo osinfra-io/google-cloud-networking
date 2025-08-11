@@ -94,9 +94,6 @@ module "private_dns" {
 }
 
 module "public_dns" {
-  # Ensure that DNSSEC is enabled for Cloud DNS
-  # checkov:skip=CKV_GCP_16: False positive
-
   source = "github.com/osinfra-io/opentofu-google-network//dns?ref=v0.2.3"
 
   dns_name   = module.helpers.env == "prod" ? "gcp.osinfra.io." : "${module.helpers.env}.gcp.osinfra.io."

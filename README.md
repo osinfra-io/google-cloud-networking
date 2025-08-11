@@ -4,12 +4,6 @@
 
 [![Dependabot](https://github.com/osinfra-io/google-cloud-networking/actions/workflows/dependabot.yml/badge.svg)](https://github.com/osinfra-io/google-cloud-networking/actions/workflows/dependabot.yml)
 
-**[Infracost](https://www.infracost.io):**
-
-[![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/cbeecfe3-576f-4553-984c-e451a575ee47/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7/branch/1ee44b4d-8e3f-4fc9-8c39-2a7c767cf0c8)](https://dashboard.infracost.io/org/osinfra-io/repos/f0cb1c98-ae8e-48c8-9cbe-8f00a8901fd7?tab=settings)
-
-💵 Monthly estimates based on Infracost baseline costs.
-
 ## 📄 Repository Description
 
 This repository manages networking resources like VPC, subnet, DNS, and NAT that can be shared across an organization. It aligns with our [Google Cloud landing zone platform](https://docs.osinfra.io/product-guides/google-cloud-platform/landing-zone) design. A landing zone should be a prerequisite to deploying enterprise workloads in a cloud environment.
@@ -27,15 +21,12 @@ Our focus is on the core fundamental practice of platform engineering, Infrastru
 
 To avoid slowing down stream-aligned teams, we want to open up the possibility for contributions. The Open Source Infrastructure (as Code) model allows team members external to the platform team to contribute with only a slight increase in cognitive load. This section is for developers who want to contribute to this repository, describing the tools used, the skills, and the knowledge required, along with OpenTofu documentation.
 
-See the documentation for setting up a development environment [here](https://docs.osinfra.io/fundamentals/development-setup).
+See the [documentation](https://docs.osinfra.io/fundamentals/development-setup) for setting up a development environment.
 
 ### 🛠️ Tools
 
-- [checkov](https://github.com/bridgecrewio/checkov)
-- [infracost](https://github.com/infracost/infracost)
 - [pre-commit](https://github.com/pre-commit/pre-commit)
-- [pre-commit-terraform](https://github.com/antonbabenko/pre-commit-terraform)
-- [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+- [osinfra-pre-commit-hooks](https://github.com/osinfra-io/pre-commit-hooks)
 
 ### 📋 Skills and Knowledge
 
@@ -44,65 +35,3 @@ Links to documentation and other resources required to develop and iterate in th
 - [vpc](https://cloud.google.com/vpc/docs)
 - [shared-vpc](https://cloud.google.com/vpc/docs/shared-vpc)
 - [subnets](https://cloud.google.com/vpc/docs/subnets)
-
-### 📓 OpenTofu Documentation
-
-<!-- BEGIN_TF_DOCS -->
-#### Providers
-
-| Name | Version |
-|------|---------|
-| google | 6.19.0 |
-
-#### Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| datadog | github.com/osinfra-io/opentofu-datadog-google-integration | v0.3.3 |
-| helpers | github.com/osinfra-io/opentofu-core-helpers//root | v0.1.2 |
-| private\_dns | github.com/osinfra-io/opentofu-google-network//dns | v0.2.1 |
-| project | github.com/osinfra-io/opentofu-google-project | v0.4.5 |
-| public\_dns | github.com/osinfra-io/opentofu-google-network//dns | v0.2.1 |
-| vpc | github.com/osinfra-io/opentofu-google-network | v0.2.1 |
-
-#### Resources
-
-| Name | Type |
-|------|------|
-| [google_compute_global_address.service_network_peering_range](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_global_address) | resource |
-| [google_compute_shared_vpc_service_project.this](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/compute_shared_vpc_service_project) | resource |
-| [google_dns_record_set.private](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
-| [google_dns_record_set.public](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
-| [google_project_iam_member.container_engine_firewall_management](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_project_iam_member.container_engine_service_agent_user](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_project_iam_member.dns_records_admins](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_project_iam_member.iam_admins](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
-| [google_service_networking_connection.this](https://search.opentofu.org/provider/hashicorp/google/latest/docs/resources/service_networking_connection) | resource |
-
-#### Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| datadog\_api\_key | Datadog API key | `string` | n/a | yes |
-| datadog\_app\_key | Datadog APP key | `string` | n/a | yes |
-| datadog\_enable | Enable Datadog integration | `bool` | `false` | no |
-| dns\_records\_admins | The set of service accounts that can administer DNS records in this project | `set(string)` | `[]` | no |
-| iam\_admins | The set of service accounts that can administer IAM in this project | `set(string)` | `[]` | no |
-| private\_record\_sets | Private DNS record sets | ```list(object({ name = string rrdatas = list(string) type = string ttl = number }))``` | `[]` | no |
-| project\_billing\_account | The alphanumeric ID of the billing account this project belongs to | `string` | `"01C550-A2C86B-B8F16B"` | no |
-| project\_cis\_2\_2\_logging\_sink\_project\_id | The CIS 2.2 logging sink benchmark project ID | `string` | n/a | yes |
-| project\_folder\_id | The numeric ID of the folder this project should be created under. Only one of `org_id` or `folder_id` may be specified | `string` | n/a | yes |
-| public\_record\_sets | Private DNS record sets | ```list(object({ name = string rrdatas = list(string) type = string ttl = number }))``` | `[]` | no |
-| vpc\_service\_projects | The map of Kubernetes service project IDs and numbers (The number should only be added if the project is a Kubernetes service project) | ```map(object({ number = optional(number) }))``` | `{}` | no |
-
-#### Outputs
-
-| Name | Description |
-|------|-------------|
-| project\_id | The project ID |
-| vpc\_name | The VPC name |
-<!-- END_TF_DOCS -->
-
-### 📓 OpenTofu Regional Documentation
-
-- [regional](regional/README.md)
