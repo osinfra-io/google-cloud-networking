@@ -80,9 +80,7 @@ module "datadog" {
   count  = var.datadog_enable ? 1 : 0
 
   api_key = var.datadog_api_key
-  labels = merge(module.helpers.labels, {
-    "your-key" = "your-value"
-  })
+  labels  = module.helpers.labels
   project = module.project.id
 }
 
@@ -243,4 +241,10 @@ resource "google_service_networking_connection" "this" {
   network                 = module.vpc.self_link
   reserved_peering_ranges = [google_compute_global_address.service_network_peering_range.name]
   service                 = "servicenetworking.googleapis.com"
+}
+
+resource "null_resource" "force_apply" {
+  triggers = {
+    always_run = timestamp()
+  }
 }

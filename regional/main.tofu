@@ -135,3 +135,9 @@ resource "google_compute_subnetwork_iam_member" "container_engine" {
   role       = "roles/compute.networkUser"
   subnetwork = module.subnets[each.key].name
 }
+
+resource "null_resource" "force_apply" {
+  triggers = {
+    always_run = timestamp()
+  }
+}
