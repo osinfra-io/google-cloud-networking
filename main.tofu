@@ -80,7 +80,9 @@ module "datadog" {
   count  = var.datadog_enable ? 1 : 0
 
   api_key = var.datadog_api_key
-  labels  = module.helpers.labels
+  labels = merge(module.helpers.labels, {
+    "your-key" = "your-value"
+  })
   project = module.project.id
 }
 
