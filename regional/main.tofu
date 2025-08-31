@@ -2,6 +2,49 @@
 # https://opentofu.org/docs/language/providers/requirements#requiring-providers
 
 terraform {
+  # State and Plan Encryption
+  # https://opentofu.org/docs/language/state/encryption
+
+  # The commented out sections below demonstrate how to configure
+  # fallback encryption methods for state and plan files for bootstrapping.
+
+  encryption {
+    method "unencrypted" "migrate" {}
+
+    key_provider "gcp_kms" "default" {
+      kms_encryption_key = var.state_kms_encryption_key
+      key_length         = 32
+    }
+
+    method "aes_gcm" "default" {
+      keys = key_provider.gcp_kms.default
+    }
+
+    plan {
+      method = method.aes_gcm.default
+      # enforced = true
+
+      fallback {
+        method = method.unencrypted.migrate
+      }
+    }
+
+    remote_state_data_sources {
+      default {
+        method = method.aes_gcm.default
+      }
+    }
+
+    state {
+      method = method.aes_gcm.default
+      # enforced = true
+
+      fallback {
+        method = method.unencrypted.migrate
+      }
+    }
+  }
+
   required_providers {
 
     # Google Cloud Provider
@@ -20,8 +63,9 @@ data "terraform_remote_state" "main" {
   backend = "gcs"
 
   config = {
-    bucket = var.remote_bucket
-    prefix = "google-cloud-networking"
+    bucket             = var.remote_bucket
+    kms_encryption_key = var.state_kms_encryption_key
+    prefix             = "google-cloud-networking"
   }
 
   workspace = "main-${module.helpers.environment}"
@@ -97,4 +141,10 @@ resource "google_compute_subnetwork_iam_member" "container_engine" {
   region     = module.helpers.region
   role       = "roles/compute.networkUser"
   subnetwork = module.subnets[each.key].name
+}
+
+resource "null_resource" "force_apply" {
+  triggers = {
+    always_run = timestamp()
+  }
 }
